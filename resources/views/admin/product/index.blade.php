@@ -19,7 +19,7 @@
             <th>Price</th>
             <th>Image</th>
             <th>Quantity</th>
-            <th>Category Id</th>
+            <th>Category</th>
             <th>Action</th>
 
         </thead>
@@ -30,13 +30,14 @@
                 <td>{{$product->product_name}}</td>
                 <td>{{$product->description}}</td>
                 <td>{{$product->price}}</td>
-                <td>{{$product->image_url}}</td>
+            <td><img  class= "w-20" src="{{asset('images/product/'.$product->image_url)}}" alt =""></td>
+
                 <td>{{$product->quantity}}</td>
-                <td>{{$product->category_id}}</td>
+                <td>{{$product->categories_name}}</td>
 
 
                 <td>
-                    <a href="{{route('admin.category.edit',$product->id)}}"class="bg-blue-600 px-2 py-1 rounded text-white hover:shadow-blue-600">Edit</a>
+                    <a href="{{route('admin.product.edit',$product->id)}}"class="bg-blue-600 px-2 py-1 rounded text-white hover:shadow-blue-600">Edit</a>
                     <a onclick="return confirm('Are you sure want to delete ?')" href="{{route('admin.product.destroy',$product->id)}}"class="bg-red-600 px-2 py-1 rounded text-white hover:shadow-blue-400">Delete</a>
 
                 </td>

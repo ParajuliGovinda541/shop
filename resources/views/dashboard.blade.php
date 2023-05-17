@@ -1,23 +1,30 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+@extends('layouts.app')
+@section('content')
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ __("You're logged in!") }}
-                </div>
-            </div>
+<h2 class="font-bold text-4xl text-blue-700">Dashboard</h2>
+
+<hr class="h-1 mb-4 bg-blue-200">
+
+    <div class="mt-4 grid grid-cols-3 gap-20">
+        <div class="px-4 py-8 rounded-lg bg-blue-600 text-white flex-justify-between">   
+            <p class="font-bold text-lg">Total News</p>
+            <p class="font-bold text-5xl">400</p>
+
         </div>
+
+        <div class="px-4 py-8 rounded-lg bg-green-600 text-white flex-justify-between">   
+
+            <p class="font-bold text-lg">Total News</p>
+            <p class="font-bold text-5xl">400</p>
     </div>
 
+    <div class="px-4 py-8 rounded-lg bg-red-600 text-white flex-justify-between">   
+        <p class="font-bold text-lg">Total News</p>
+        <p class="font-bold text-5xl">400</p>
 
-
-</x-app-layout>
+</div>
+    </div>
+@endsection
 
 
 

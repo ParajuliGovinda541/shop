@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('price');
             $table->string('image_url');
             $table->string('quantity');
-            $table->string('category_id');
+            $table->string('categories_name');
             $table->timestamps();
         });
     }

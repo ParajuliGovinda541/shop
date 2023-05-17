@@ -13,6 +13,16 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+                {{-- // jquery ko link deko --}}
+                <script src="{{asset('datatable/jquery-3.6.0.js')}}"></script>  
+
+                {{-- css ko link --}}
+                <link rel="stylesheet" href="{{asset('datatable/datatables.css')}}">
+        
+                {{-- javascript code --}}
+        
+                <script src="{{asset('datatable/datatables.js')}}"></script>
     </head>
     <body class="font-sans antialiased">
     @include('layouts.navigation')
@@ -22,11 +32,11 @@
            <div class="flex flex-row justify-center py-10 w-64  text-white  bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700 min-h-screen">
            
            <div class="flex flex-col gap-3 text-lg min-h-full m-5 rounded-sm ">
-            <a href="" class="hover:bg-white p-1 hover:text-gray-800 border-b-2">Dashboard</a>
+            <a href="{{route('dashboard')}}" class="hover:bg-white p-1 hover:text-gray-800 border-b-2">Dashboard</a>
             <a href="{{route('admin.product.index')}}" class="hover:bg-white p-1 hover:text-gray-800 border-b-2">Products</a>
             <a href="{{route('admin.category.index')}}" class="hover:bg-white p-1 hover:text-gray-800 border-b-2">Category</a>
-            <a href="" class="hover:bg-white p-1 hover:text-gray-800 border-b-2">Dashboard</a>
-            <a href="" class="hover:bg-white p-1 hover:text-gray-800 border-b-2">Dashboard</a>
+            <a href="" class="hover:bg-white p-1 hover:text-gray-800 border-b-2">Order</a>
+            <a href="" class="hover:bg-white p-1 hover:text-gray-800 border-b-2">Report</a>
            
            </div>
 
@@ -34,6 +44,9 @@
            <!-- COntents -->
            <div class="p-6 text-white text-md">
             @yield('content')
+
+
+            
            </div>
           
 
