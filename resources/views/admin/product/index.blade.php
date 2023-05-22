@@ -24,9 +24,12 @@
 
         </thead>
         <tbody>
+            @php
+                $sn=1
+            @endphp
             @foreach($products as $product)
             <tr>
-                <td>{{$product->id}}</td>
+                <td>{{$sn++}}</td>
                 <td>{{$product->product_name}}</td>
                 <td>{{$product->description}}</td>
                 <td>{{$product->price}}</td>

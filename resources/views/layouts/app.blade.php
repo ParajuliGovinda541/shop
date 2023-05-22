@@ -42,7 +42,7 @@
 
            </div>
            <!-- COntents -->
-           <div class="p-6 text-white text-md">
+           <div class="flex-1 p-6 text-white text-md">
             @yield('content')
 
 

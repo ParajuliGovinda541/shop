@@ -14,8 +14,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products=Product::all();
-        // dd($categories);
+        $products=Category::join('products','categories.id','=','products.categories_id')->get();
+        //  dd($products);
 
         return view('admin.product.index',compact('products'));
     }
@@ -45,6 +45,7 @@ class ProductController extends Controller
 
             'image_url'=>'required|image|mimes:jpeg,png,jpg',
             'quantity'=>'required|numeric'
+            
 
         ]);
         $data=[
@@ -53,6 +54,7 @@ class ProductController extends Controller
             'price'=>$request['price'],
             'image_url'=>$request['image_url'],
             'quantity'=>$request['quantity'],
+            'categories_id'=>$request['categories_id']
 
 
 
@@ -101,8 +103,9 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
+        $categories= Category::all();
         $product=Product::find($id);
-        return view('admin.product.edit',compact('product'));
+        return view('admin.product.edit',compact('product','categories'));
     }
 
     /**
@@ -145,8 +148,11 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Product $product)
+    public function destroy(string $id)
     {
-        //
+        $products = Product::find($id);
+        // dd($products);
+        $products->delete();
+        return redirect(route('admin.product.index'))->with('success','Product deleted sucessfully!');
     }
 }

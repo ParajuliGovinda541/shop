@@ -61,14 +61,14 @@
         <p class="text-red-600 text-xs -mt-2">{{$message}}</p>
     @enderror
     </div>
-     {{-- <div>
+     <div>
       <select name="categories_name" id="">
         <option value="">Select Category</option>
-        @foreach ($allcategory as $cat)
+        @foreach ($categories as $cat)
         <option value="{{$cat->categories_name}}">{{$cat->categories_name}}</option>
         @endforeach
       </select>
-     </div> --}}
+     </div>
     </div>
     <div class="flex">
       <input class="bg-amber-400 text-black px-4 py-2 rounded-lg shadow-md hover:shadow-amber-300" type="submit" value="Add Product">

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('price');
             $table->string('image_url');
             $table->string('quantity');
-            $table->string('categories_name');
+            $table->foreignId('categories_id')->constrained();
             $table->timestamps();
         });
     }

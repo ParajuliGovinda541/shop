@@ -20,7 +20,8 @@
         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" >
           Description
         </label>
-        <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="description" value="{{old('description')}}"id="grid-last-name" type="text" placeholder="Clothing (also known as clothes, garments, dress, apparel, or attire) is any item worn on the body. Typically, clothing is made of fabrics or textiles, but over time it has included garments made from animal skin and other thin sheets of materials and natural products found in the environment">
+        
+        <textarea class=" appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="description" value="{{old('description')}}"id="grid-last-name" type="text" placeholder="Clothing (also known as clothes, garments, dress, apparel, or attire) is any item worn on the body. Typically, clothing is made of fabrics or textiles, but over time it has included garments made from animal skin and other thin sheets of materials and natural products found in the environment"></textarea>
         @error('description')
         <p class="text-red-600 text-xs -mt-2">{{$message}}</p>
     @enderror
@@ -56,10 +57,10 @@
       @enderror
         </div>
        <div>
-        <select name="categories_name" id="">
+        <select class= "text-black"name="categories_id" id="">
           <option value="">Select Category</option>
           @foreach ($allcategory as $cat)
-          <option value="{{$cat->categories_name}}">{{$cat->categories_name}}</option>
+          <option value="{{$cat->id}}">{{$cat->categories_name}}</option>
           @endforeach
                 @error('categories_name')
       <p class="text-red-600 text-xs -mt-2">{{$message}}</p>
