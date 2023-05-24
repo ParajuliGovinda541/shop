@@ -27,6 +27,16 @@ Route::get('/adminindex', function () {
     return view('admin.index');
 });
 
+Route::get('index', function () {
+    return view('user.index');
+});
+
+Route::get('/body',function(){
+    return view('user.body');
+});
+
+
+
 
 
 
