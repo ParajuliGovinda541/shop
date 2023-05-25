@@ -5,8 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\DashboardController;
-
-
+use App\Http\Controllers\FrontuserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,19 +22,26 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/adminindex', function () {
-    return view('admin.index');
-});
+// Route::get('/adminindex', function () {
+//     return view('admin.index');
+// });
 
-Route::get('index', function () {
-    return view('user.index');
-});
+// Route::get('index', function () {
+//     return view('user.index');
+// });
 
-Route::get('/body',function(){
-    return view('user.body');
-});
+// Route::get('/body',function(){
+//     return view('user.body');
+// });
 
 
+
+
+//route for userside
+
+
+Route::get('/user',[FrontuserController::class,'index'])->name('user.index');
+Route::get('/user/about',[FrontuserController::class,'about'])->name('user.about');
 
 
 
