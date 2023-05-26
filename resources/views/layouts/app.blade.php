@@ -39,6 +39,8 @@
             <a href="{{route('admin.category.index')}}" class="hover:bg-white p-1 hover:text-gray-800 border-b-2">Category</a>
             <a href="" class="hover:bg-white p-1 hover:text-gray-800 border-b-2">Order</a>
             <a href="" class="hover:bg-white p-1 hover:text-gray-800 border-b-2">Report</a>
+            <a href="" class="hover:bg-white p-1 hover:text-gray-800 border-b-2">Settings</a>
+
            
            </div>
 

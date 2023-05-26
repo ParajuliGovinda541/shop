@@ -3,7 +3,7 @@
     .carousel {
       width: 100%;
       overflow: hidden;
-      position: relative;
+      position: static;
     }
     
     .carousel-item {
