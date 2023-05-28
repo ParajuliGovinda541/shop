@@ -1,59 +1,45 @@
-<x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
+            <!-- Scripts -->
+            @vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
+<body   >  
 
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
+    <div class="grid grid-cols-2">
+        <img src="{{asset('images/user/slider/slider1.jpg')}}" class="h-screen">
+        <div class="flex justify-center items-center">
+            <div class="w-full text-center">
+                <h2 class="font-bold text-4xl"> Login Here</h2>
+                <img src="{{asset('images/logo.jpg')}}" class="mx-auto my-4 w-40">
+                <form action="{{route('login')}}" method="POST">
+                    @csrf
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                    <input type="email" name="email" placeholder="Enter Email" class="p-4 rounded-lg w-8/12 my-4">
+                    <input type="password" name="password" placeholder="Enter Password"class="p-4 rounded-lg w-8/12 my-4">
+
+          <br>
+                    <input class="bg-amber-400 text-black px-4 py-2 rounded-lg shadow-md hover:shadow-amber-300" type="submit" value="Login">
+                    
+<br>
+
+<br>
+
+                    <a href="{{route('register')}}" class="">Don't Have Account?
+                        <br>
+                        <span>Register Here</span></a>
+                </form>
+
+            </div>
+    
         </div>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
 
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" name="remember">
-                <span class="ml-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
-            </label>
-        </div>
-
-
-        
-
-        <div class="flex items-center justify-start mt-4 ">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
-
-            <x-primary-button class="ml-3">
-                {{ __('Log in') }}
-            </x-primary-button>
-
-        </div>
-        <div class="flex justify-end items- mb-6">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('register') }}">
-                    {{ __('Dont have a Account?') }}
-                </a>
-            @endif
-
-        </div>
-    </form>
-</x-guest-layout>
+    </div>
+    
+</body>
+</html>

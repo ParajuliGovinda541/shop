@@ -16,11 +16,12 @@
       <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#winter</span>
     </div>
   </div> --}}
-  
+  <br>
 
 <div>
-    <h1 class="text-center text-4xl">Our Products</h1>
+    <h1 class="text-center text-4xl">Trending Products</h1>
 </div>
+<br>
   <div class="grid grid-cols-3 ">
     {{-- Cards start here --}}
     <div class=" mt-5 ml-10 max-w-sm rounded overflow-hidden shadow-lg">

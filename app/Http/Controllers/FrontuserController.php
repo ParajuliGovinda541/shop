@@ -10,4 +10,11 @@ class FrontuserController extends Controller
     {
         return view('user.index');
     }
+
+    public function about()
+    {
+        return view('user.about');
+    }
+
 }   
+

@@ -27,11 +27,12 @@
           <div class="flex flex-shrink-0 items-center">
       
             <img src="{{asset('images/logo.jpg')}}" alt="logo" class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200">
+      
           </div>
           <div class="hidden sm:ml-6 sm:block">
             <div class="flex space-x-4">
               <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-              <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">About</a>
+              <a href="{{route('user.about')}}" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">About Us</a>
               <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Shop</a>
               <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Our Collections
                 {{-- <ul>
