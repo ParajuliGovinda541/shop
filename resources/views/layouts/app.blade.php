@@ -38,7 +38,7 @@
             <a href="{{route('admin.product.index')}}" class="hover:bg-white p-1 hover:text-gray-800 border-b-2">Products</a>
             <a href="{{route('admin.category.index')}}" class="hover:bg-white p-1 hover:text-gray-800 border-b-2">Category</a>
             <a href="" class="hover:bg-white p-1 hover:text-gray-800 border-b-2">Order</a>
-            <a href="" class="hover:bg-white p-1 hover:text-gray-800 border-b-2">Report</a>
+            <a href="{{route('contact.index')}}" class="hover:bg-white p-1 hover:text-gray-800 border-b-2">Feedback</a>
             <a href="" class="hover:bg-white p-1 hover:text-gray-800 border-b-2">Settings</a>
 
            

@@ -58,7 +58,6 @@
       right: 10px;
     }
   </style>
-
   <div class="carousel">
     <div class="carousel-item">
       <img src="{{asset('images/user/slider/slider1.jpg')}}" alt="Image 1" style="height:600px; object-fit: cover">

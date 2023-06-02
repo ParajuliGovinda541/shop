@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FrontuserController;
@@ -31,6 +32,17 @@ use App\Http\Controllers\FrontuserController;
 
 Route::get('/',[FrontuserController::class,'index'])->name('user.index');
 Route::get('/user/about',[FrontuserController::class,'about'])->name('user.about');
+Route::get('/user/viewproduct/{product}',[FrontuserController::class,'viewproduct'])->name('user.viewproduct');
+
+
+
+//route for contact
+Route::get('/contact',[ContactController::class,'index'])->name('contact.index');
+Route::get('/contact/create',[ContactController::class,'create'])->name('contact.create');
+Route::post('/contact',[ContactController::class,'store'])->name('contact.store');
+
+
+
 
 
 

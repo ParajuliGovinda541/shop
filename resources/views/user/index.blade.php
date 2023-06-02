@@ -18,12 +18,21 @@
 
 
     @include('user.slider')
+    @include('user.about')
 
-    @include('user.body')
+    @include('user.product')
+
+
+
+    {{-- @include('user.body') --}}
+
     <div>
         @yield('content')
     </div>
 
+    @include('user.contact')
+
+    @include('user.footer')
     
 </body>
 </html>

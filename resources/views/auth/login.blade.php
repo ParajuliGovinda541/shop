@@ -11,7 +11,7 @@
 <body   >  
 
     <div class="grid grid-cols-2">
-        <img src="{{asset('images/user/slider/slider1.jpg')}}" class="h-screen">
+        <img src="https://tecdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp" class="h-screen">
         <div class="flex justify-center items-center">
             <div class="w-full text-center">
                 <h2 class="font-bold text-4xl"> Login Here</h2>
