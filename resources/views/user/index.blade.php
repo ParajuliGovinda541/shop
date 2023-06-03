@@ -18,7 +18,9 @@
 
 
     @include('user.slider')
-    @include('user.about')
+
+    @include('user.showcategory')
+
 
     @include('user.product')
 
@@ -29,7 +31,7 @@
     <div>
         @yield('content')
     </div>
-
+    
     @include('user.contact')
 
     @include('user.footer')

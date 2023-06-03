@@ -68,6 +68,15 @@
     <div class="carousel-item">
       <img src="{{asset('images/user/slider/slider2.jpg')}}" alt="Image 3" style="height:500px; object-fit: cover">
     </div>
+    <div class="carousel-item">
+      <img src="{{asset('images/user/slider/slider1.jpg')}}" alt="Image 1" style="height:600px; object-fit: cover">
+    </div>
+    <div class="carousel-item ">
+      <img src="{{asset('images/user/slider/slider3.jpg')}}" alt="Image 2" style="height:600px; object-fit: cover">
+    </div>
+    <div class="carousel-item">
+      <img src="{{asset('images/user/slider/slider2.jpg')}}" alt="Image 3" style="height:500px; object-fit: cover">
+    </div>
     
     <div class="carousel-indicators">
       <ul>

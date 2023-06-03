@@ -27,6 +27,13 @@
             <h3>{{$categories}}</h3>
 
         </div>  
+
+        <div class="px-4 py-8 rounded-lg bg-blue-600 text-white flex-justify-between"> 
+            <p class="font-bold text-lg">Total Feedback</p>
+            <a class=" px-4 py-2 mx-2 rounded-lg hover:shadow-amber-300"href="{{route('contact.index')}}"></a>
+            <h3>{{$contacts}}</h3>
+
+        </div>  
     </div>
 @endsection
 

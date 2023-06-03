@@ -1,6 +1,11 @@
 
 @vite(['resources/css/app.css', 'resources/js/app.js'])
 
+
+{{-- @include('user.navbar');  --}}
+
+
+
 <!-- Container for demo purpose -->
 <div class="container my-24 px-6 mx-auto">
 
@@ -76,7 +81,7 @@
               <label class="form-check-label inline-block text-gray-800" for="exampleCheck87">Send me a copy of this
                 message</label>
             </div>
-            <input class="bg-amber-400 text-black px-4 py-2 rounded-lg shadow-md hover:shadow-amber-300" type="submit" value="Add Category">
+            <input class="bg-amber-400 text-black px-4 py-2 rounded-lg shadow-md hover:shadow-amber-300" type="submit" value="Send">
                 {{-- <button type="submit" class="
                 w-full
                 px-6

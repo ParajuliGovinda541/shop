@@ -17,6 +17,17 @@ class CategoryController extends Controller
         return view('admin.category.index',compact('categories'));
     }
 
+    public function showcategory()
+    {
+        $categories=Category::all();
+        // dd($categories);
+
+        return view('user.showcategory',compact('categories'));
+    }
+
+    
+
+
 
     public function create()
     {
@@ -28,8 +39,28 @@ class CategoryController extends Controller
         // dd($request->name); it prints the  single data
 
         $data = $request->validate([
-            'categories_name'=>'required'
+            'categories_name'=>'required',
+            'image_url'=>'required|image|mimes:jpg,jpeg,png'
+
         ]);
+        //dd($request['image_url']);
+        $data=[
+            'categories_name'=>$request['categories_name']
+
+
+            
+
+        ];
+
+        if($request->hasFile('image_url'))
+        {
+            $image=$request->file('image_url');
+            $name= time().'.'.$image->getClientOriginalExtension();
+            $destinationPath=public_path('/images/category');
+            $image ->move($destinationPath,$name);
+            $data['image_url']=$name;    
+            
+        }
 
        // dd($data); // printing the data 
         
@@ -49,10 +80,24 @@ class CategoryController extends Controller
     public function update(Request $request,$id)
     {
         $data= $request->validate([
-            'categories_name'=>'required'
+            'categories_name'=>'required',
+            'image_url'=>'required|image|mimes:jpg,jpeg,png'
+            
         
 
         ]);
+        if($request->hasFile('image_url'))
+        {
+            $image=$request->file('image_url');
+            $name= time().'.'.$image->getClientOriginalExtension();
+            $destinationPath=public_path('/images/category');
+            $image ->move($destinationPath,$name);
+            $data['image_url']=$name;    
+            
+        }
+
+
+
 
         $category= Category::find($id);
         $category->update($data);

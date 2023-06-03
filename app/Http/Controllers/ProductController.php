@@ -43,7 +43,7 @@ class ProductController extends Controller
             'description'=>'required',
             'price'=>'required|numeric',
 
-            'image_url'=>'required|image|mimes:jpeg,png,jpg',
+            'image_url'=>'required|mimes:jpeg,png,jpg',
             'quantity'=>'required|numeric'
             
 

@@ -15,6 +15,9 @@
         <thead>
             <th>S.N</th>
             <th>Category</th>
+            <th>Image</th>
+
+
             <th>Action</th>
 
         </thead>
@@ -24,6 +27,9 @@
                 <td>{{$category->id}}</td>
 
                 <td>{{$category->categories_name}}</td>
+                <td><img  class= "w-20" src="{{asset('images/category/'.$category->image_url)}}" alt =""></td>
+
+
                 <td>
                     <a href="{{route('admin.category.edit',$category->id)}}"class="bg-blue-600 px-2 py-1 rounded text-white hover:shadow-blue-600">Edit</a>
                     <a onclick="return confirm('Are you sure want to delete ?')" href="{{route('admin.category.destroy',$category->id)}}"class="bg-red-600 px-2 py-1 rounded text-white hover:shadow-blue-400">Delete</a>

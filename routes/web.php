@@ -24,6 +24,18 @@ use App\Http\Controllers\FrontuserController;
 // });
 
 
+Route::get('/',[FrontuserController::class,'home'])->name('home');
+
+
+// route for userregister and login
+Route::get('/userlogin',[FrontuserController::class,'userlogin'])->name('userlogin');
+Route::get('/userregister',[FrontuserController::class,'userregister'])->name('user.register');
+Route::post('/userregister',[FrontuserController::class,'userstore'])->name('user.store');
+
+
+// route for product store page
+Route::get('/user/product',[FrontuserController::class,'product'])->name('user.product');
+
 
 
 
@@ -34,10 +46,14 @@ Route::get('/',[FrontuserController::class,'index'])->name('user.index');
 Route::get('/user/about',[FrontuserController::class,'about'])->name('user.about');
 Route::get('/user/viewproduct/{product}',[FrontuserController::class,'viewproduct'])->name('user.viewproduct');
 
+// route ror user contact
+Route::get('/user/contact',[ContactController::class,'contactpage'])->name('user.contact');
 
 
-//route for contact
+//route for contact admin
+
 Route::get('/contact',[ContactController::class,'index'])->name('contact.index');
+
 Route::get('/contact/create',[ContactController::class,'create'])->name('contact.create');
 Route::post('/contact',[ContactController::class,'store'])->name('contact.store');
 
