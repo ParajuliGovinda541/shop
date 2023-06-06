@@ -9,7 +9,7 @@
 <script>
     setTimeout(function(){
 
-        $('#messagebox').fadeOut(500);
+        $('#messagebox').fadeOut(3500);
         
     }, 1000);
 </script>

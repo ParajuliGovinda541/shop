@@ -1,5 +1,7 @@
+@include('user.master')
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +15,7 @@
     </title>
 
 </head>
+
 <body>
     @include('user.navbar')
 
@@ -31,10 +34,11 @@
     <div>
         @yield('content')
     </div>
-    
+
     @include('user.contact')
 
     @include('user.footer')
-    
+
 </body>
+
 </html>

@@ -22,9 +22,13 @@
 
         </thead>
         <tbody>
+            @php
+            $sn=1
+        @endphp
             @foreach($categories as $category)
             <tr>
-                <td>{{$category->id}}</td>
+                <td>{{$sn++}}</td>
+
 
                 <td>{{$category->categories_name}}</td>
                 <td><img  class= "w-20" src="{{asset('images/category/'.$category->image_url)}}" alt =""></td>

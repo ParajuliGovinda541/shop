@@ -22,9 +22,10 @@
                 <p class="text-gray-700 text-base">Price: Rs {{ $product->price }}</p>
             </div>
             <div class="px-6 py-4">
-                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                    Add to Cart
-                </button>
+
+
+              
+               
 
 
             </div>
@@ -34,14 +35,14 @@
 
 
 
-  </div>
+</div>
 <div class=" flex items-center justify-between p-4">
 
-  <div class="mx-24 my-10 ">
-    {{ $products->links() }}
-</div>
+    <div class="mx-24 my-10 ">
+        {{ $products->links() }}
+    </div>
 
-{{-- <div class="text-end py-5">
+    {{-- <div class="text-end py-5">
   <button class="rounded-full">
     <a href="{{ route('user.product') }}" class="option 1">View  Products</a>
     </button>
@@ -49,7 +50,7 @@
 
 </div>
 
- 
+
 
 
 
