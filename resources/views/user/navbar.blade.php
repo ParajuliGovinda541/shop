@@ -112,7 +112,7 @@
                         @csrf
                         <button type="submit"> Logout</button>
                     </form>
-                    <a href="{{route('cart.index')}}"> My Cart</a>
+                    <a href="{{route('user.mycart')}}"> My Cart</a>
                 </div>
             @else
                 <span><a href="{{ route('userlogin') }}">Login/Register</a></span>

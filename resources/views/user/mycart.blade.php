@@ -19,7 +19,7 @@
 
             			<div class="flex justify-between items-center mt-6 pt-6">
             				<div class="flex  items-center">
-            					<img src="https://i.imgur.com/EEguU02.jpg" width="60" class="rounded-full ">
+            					<img src="{{ asset('images/cart/'. $cart->image_url)}}" width="60" class="rounded-full ">
 
             					<div class="flex flex-col ml-3">
             						<span class="md:text-md font-medium">{{$cart->user_id}}</span>

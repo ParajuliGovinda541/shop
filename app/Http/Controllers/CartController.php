@@ -40,11 +40,25 @@ $categories=Category::all();
      */
     public function store(Request $request)
     {
-        // dd($request);   
+        // dd($request);     
         $data = $request->validate([ 
+
             'qty' => 'required',
+            'image_url' => 'required',
+
             'product_id' => 'required',
+            'product_name' => 'required',
+
         ]);
+        if($request->hasFile('image_url'))
+        {
+            $image=$request->file('image_url');
+            $name= time().'.'.$image->getClientOriginalExtension();
+            $destinationPath=public_path('/images/product');
+            $image ->move($destinationPath,$name);
+            $data['image_url']=$name;    
+            
+        }
 
         $data['user_id'] = auth()->user()->id;
 
