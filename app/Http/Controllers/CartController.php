@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\User;
+
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\support\Facades\Auth ;
@@ -40,7 +42,7 @@ $categories=Category::all();
      */
     public function store(Request $request)
     {
-        // dd($request);     
+        // dd($request);       
         $data = $request->validate([ 
 
             'qty' => 'required',
@@ -49,12 +51,13 @@ $categories=Category::all();
             'product_id' => 'required',
             'product_name' => 'required',
 
+
         ]);
         if($request->hasFile('image_url'))
         {
             $image=$request->file('image_url');
             $name= time().'.'.$image->getClientOriginalExtension();
-            $destinationPath=public_path('/images/product');
+            $destinationPath=public_path('/images/cart');
             $image ->move($destinationPath,$name);
             $data['image_url']=$name;    
             
@@ -68,7 +71,7 @@ $categories=Category::all();
         {
             return back()->with('success','Item already in Cart');
         }
-
+// dd($check);
         Cart::create($data);
         return back()->with('success','Item added to Cart');
     }

@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::table('carts', function (Blueprint $table) {
             $table->string('product_name')->nullable();
+
             
         });
     }
@@ -24,6 +25,7 @@ return new class extends Migration
     {
         Schema::table('carts', function (Blueprint $table) {
             $table->dropColumn('product_name');
+
             
         });
     }
