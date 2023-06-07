@@ -20,7 +20,7 @@
 <body>
     @include('user.navbar')
 
-    <form action="{{route('cart.store')}}" method="POST">
+    <form action="{{route('cart.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class=" mt-5 ml-10 mb-20 max-w-sm rounded overflow-hidden shadow-lg">
             <img class="w-full" src="{{ asset('images/product/' . $product->image_url) }}" alt="Product Image">

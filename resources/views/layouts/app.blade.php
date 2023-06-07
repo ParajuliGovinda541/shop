@@ -14,17 +14,7 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
         <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-
-                {{-- // jquery ko link deko --}}
-                <script src="{{asset('datatable/jquery-3.6.0.js')}}"></script>  
-
-                {{-- css ko link --}}
-                <link rel="stylesheet" href="{{asset('datatable/datatables.css')}}">
-        
-                {{-- javascript code --}}
-        
-                <script src="{{asset('datatable/datatables.js')}}"></script>
+ @include('links.links')
     </head>
     <body class="font-sans antialiased">
     @include('layouts.navigation')

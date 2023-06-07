@@ -1,6 +1,8 @@
 @include('user.master')
 @section('content')
 @include('layouts.message')
+@include('links.links')	
+
 
 
 <div class="h-screen bg-gray-300">
@@ -21,7 +23,7 @@
             				<div class="flex  items-center">
 								
 
-            					<img src="{{ asset('images/cart/' . $cart->image_url) }}" alt="{{ asset('images/cart/' . $cart->image_url) }}" width="60" class="rounded-full ">
+            					<img src="{{ asset('images/product/' . $cart->image_url) }}" alt="{{ asset('images/cart/' . $cart->image_url) }}" width="60" class="rounded-full ">
 							
 
             					<div class="flex flex-col ml-3">
@@ -38,10 +40,10 @@
 
             				<div class="flex justify-center items-center">
             					
-            					<div class="pr-8 flex ">
-            						<span class="font-semibold">-</span>
-            						<input type="text" class="focus:outline-none bg-gray-100 border h-6 w-8 rounded text-sm px-2 mx-2" value="1">
-            						<span class="font-semibold">+</span>
+            					<div class="pr-8 flex cursor-pointer">
+            						<span class="font-semibold"id="minus">-</span>
+            						<input type="text" class="focus:outline-none bg-gray-100 border h-6 w-8 rounded text-sm px-2 mx-2" value="1" id="num">
+            						<span class="font-semibold " id="plus" >+</span>
             					</div>
 
             					<div class="pr-8 ">
@@ -55,8 +57,29 @@
             				</div>
             				
             			</div>
-						@endforeach            			
+						@endforeach  
+
+
+						<div class="flex justify-between items-center mt-6 pt-6 border-t"> 
+							<div class="flex items-center">
+								<i class="fa fa-arrow-left text-sm pr-2"></i>
+
+								<a href="{{route('user.product')}}" class="text-md  font-medium text-blue-500">Continue Shopping</a>
+							</div>
+	
+							<div class="flex justify-center items-end">
+								<span class="text-sm font-medium text-gray-400 mr-1">Subtotal:</span>
+								<span class="text-lg font-bold text-gray-800 "> $24.90</span>
+								
+							</div>
+							
+						</div>
             		</div>
+
+				
+
+
+
             		<div class=" p-5 bg-gray-800 rounded overflow-visible">
 
             			<span class="text-xl font-medium text-gray-100 block pb-3">Card Details</span>
@@ -172,3 +195,57 @@
     </div>
     </div>
 </div>
+
+{{-- <script>
+	const plus= document.queryselector('#plus'),
+	minus=document.queryselector('#minus'),
+	num=document.queryselector('#num');
+
+	let a=1;
+
+	plus.addEventListener("click",()=>	
+	{
+		a++;
+		a=(a<10)?"0"+a:a;
+		num.innerText=a;
+		console.log(a);
+	}); 	 	 	
+
+
+	minus.addEventListener("click",()=>	
+	{
+		if(a>1)
+		{
+			a--;
+			a=(a<10)?"0"+a:a;
+			num.innerText=a;
+		}
+	});
+
+
+
+</script> --}}
+
+<script>
+    const plus = document.querySelector('#plus');
+    const minus = document.querySelector('#minus');
+    const num = document.querySelector('#num');
+
+    let a = 1;
+
+    plus.addEventListener('click', () => {
+        a++;
+        a = (a < 10) ? '0' + a : a;
+        num.value = a;
+        console.log(a);
+    });
+
+    minus.addEventListener('click', () => {
+        if (a > 1) {
+            a--;
+            a = (a < 10) ? '0' + a : a;
+            num.value = a;
+        }
+    });
+</script>
+
