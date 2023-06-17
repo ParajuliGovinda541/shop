@@ -39,11 +39,8 @@
 
                         <a href="{{ route('user.contact') }}"
                             class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Contacts</a>
-                        {{-- <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">My Accounts</a> --}}
-                        <a href="{{ '/userlogin' }}"
-                            class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Login</a>
-                        <a href="{{ '/userregister' }}"
-                            class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Register</a>
+                        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">My Orders</a>
+                      
                     </div>
                 </div>
             </div>
@@ -88,11 +85,8 @@
         </div>
     </div>
     <!-- Mobile menu, show/hide based on menu state. -->
-    <div class="sm:hidden" id="mobile-menu">
+    {{-- <div class="sm:hidden" id="mobile-menu">
         <div class="px-2 pt-2 pb-3 space-y-1">
-            <a href="{{ route('user.about') }}"
-                class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
-                aria-current="page">About Us</a>
             <a href="#"
                 class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Shop</a>
             <a href="#"
@@ -103,22 +97,11 @@
             <a href="#"
                 class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">My
                 Account</a>
-            <a href="{{ '/userlogin' }}"
-                class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Login</a>
-                @if (auth()->user())
-                <div>
-                    <a href="">{{ auth()->user()->name }} /</a>
-                    <form class="inline" action="{{ route('logout') }}" method="POST">
-                        @csrf
-                        <button type="submit"> Logout</button>
-                    </form>
-                    <a href="{{route('user.mycart')}}"> My Cart</a>
-                </div>
-            @else
-                <span><a href="{{ route('userlogin') }}">Login/Register</a></span>
-            @endif
-            <a href="{{ '/register' }}"
-                class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Register</a>
+            {{-- <a href="{{ '/userlogin' }}"
+                class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Login</a> --}}
+              
+            {{-- <a href="{{ '/register' }}"
+                class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Register</a> --}}
         </div>
-    </div>
+    {{-- </div>  --}}
 </nav>

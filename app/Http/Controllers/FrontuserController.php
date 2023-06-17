@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Category;
-
+use App\Models\Cart;
+    
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Illuminate\Validation\Rules;
@@ -16,22 +17,27 @@ class FrontuserController extends Controller
 {
 
 
-    // public function showcategory()
-    // {
-    //     $categories=Category::all();
-    //     // dd($categories);
-
-    //     return view('user.showcategory',compact('categories'));
-    // }
+    public function include()
+    {
+        if(!auth()->user())
+        {
+            return 0;
+        }
+        else
+        {
+            return Cart::where('user_id',auth()->user()->id)->count();
+        }
+    }
 
 
 
     public function index()
     {
+        $itemsincart = $this->include();
         $products= Product::paginate(8);
         $categories=Category::all();
 
-        return view('user.index',compact('products','categories'));
+        return view('user.index',compact('products','categories','itemsincart'));
     }
 
     public function about()
@@ -43,10 +49,9 @@ class FrontuserController extends Controller
     public function viewproduct(Product $product)
 
     {
-        // $products= Product::all();
-        // return response($product);
+        $itemsincart = $this->include();
 
-        return view('user.viewproduct',compact('product'));
+        return view('user.viewproduct',compact('product','itemsincart'));
     }
 
 
@@ -58,6 +63,7 @@ class FrontuserController extends Controller
     }
 
     public function userlogin()
+    
     {
         return view('user.userlogin');
     }
@@ -87,11 +93,29 @@ class FrontuserController extends Controller
 
     public function product()
     {
-        $products= Product::paginate(100 );
+        $itemsincart = $this->include();
 
-        return view('user.product',compact('products'));
+        $products= Product::paginate(5);
+
+        return view('user.product',compact('products','itemsincart'));
 
     }
+
+// route for viewing category
+
+public function viewcategory($id)
+
+{
+    $category = Category::find($id);
+    $products = Product::where('categories_id',$id)->paginate(2);
+    $categories = Category::all();
+    $itemsincart = $this->include();
+    return view('user.viewcategory',compact('products','categories','itemsincart','category'));
+
+    // return response($product);
+
+    // return view('user.viewcategory',compact('categories','itemsincart','products')); 
+}
 
 }   
 

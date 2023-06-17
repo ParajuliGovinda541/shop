@@ -44,6 +44,7 @@ Route::get('/user/product', [FrontuserController::class, 'product'])->name('user
 
 
 Route::get('/', [FrontuserController::class, 'index'])->name('user.index');
+
 Route::get('/user/about', [FrontuserController::class, 'about'])->name('user.about');
 Route::get('/user/viewproduct/{product}', [FrontuserController::class, 'viewproduct'])->name('user.viewproduct');
 
@@ -56,10 +57,12 @@ Route::middleware(['auth'])->group(function(){
     Route::post('/mycart/store',[CartController::class,'store'])->name('cart.store');
 });
 
+Route::get('/user/viewcategory/{id}', [FrontuserController::class, 'viewcategory'])->name('user.viewcategory');
 
 
 
 
+// route for admin side
 
 Route::middleware('auth')->group(function () {
     // Route of category

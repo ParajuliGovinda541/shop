@@ -6,6 +6,7 @@ use App\Models\Cart;
 use App\Models\User;
 
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\support\Facades\Auth ;
 
@@ -16,18 +17,45 @@ class CartController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
-        $carts = Cart::where('user_id',auth()->user()->id)->get();
-        return view('user.viewcart',compact('carts','categories'));
-    }
+        if(!auth()->user())
+        {
+            $itemsincart = 0;
+        }
+        else
+        {
+            $itemsincart = Cart::where('user_id',auth()->user()->id)->count();
+        }
 
+        $categories = Category::all();
+       $products=Product::all();
+
+
+        $carts = Cart::where('user_id',auth()->user()->id)->get();
+
+        return view('user.viewcart',compact('carts','categories','products'));
+        return view('viewcart',compact('carts','categories','itemsincart'));
+
+    }
+ 
+    
     public function mycart()
     {
-        $carts = Cart::where('user_id',auth()->user()->id)->get();
-$categories=Category::all();
-        return view('user.mycart',compact('carts','categories'));
-        
+        if(!auth()->user())
+        {
+            $itemsincart = 0;
+        }
+        else
+        {
+            $itemsincart = Cart::where('user_id',auth()->user()->id)->count();
+        }
+      
+
+        $carts = Cart::where('user_id', auth()->user()->id)->get();
+        $categories = Category::all();
+    
+        return view('user.mycart', compact('carts', 'categories','itemsincart'));
     }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -50,6 +78,7 @@ $categories=Category::all();
 
             'product_id' => 'required',
             'product_name' => 'required',
+
 
 
         ]);
@@ -75,6 +104,11 @@ $categories=Category::all();
         Cart::create($data);
         return back()->with('success','Item added to Cart');
     }
+
+
+
+
+
 
     /**
      * Display the specified resource.

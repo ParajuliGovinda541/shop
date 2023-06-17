@@ -2,6 +2,8 @@
 @section('content')
 @include('layouts.message')
 @include('links.links')	
+@include('user.navbar')
+
 
 
 
@@ -21,7 +23,7 @@
 						@foreach ($carts as $cart)
             			<div class="flex justify-between items-center mt-6 pt-6">
             				<div class="flex  items-center">
-								
+							
 
             					<img src="{{ asset('images/product/' . $cart->image_url) }}" alt="{{ asset('images/cart/' . $cart->image_url) }}" width="60" class="rounded-full ">
 							
@@ -41,14 +43,16 @@
             				<div class="flex justify-center items-center">
             					
             					<div class="pr-8 flex cursor-pointer">
-            						<span class="font-semibold"id="minus">-</span>
+									<button onclick="decrement()" id="bt">
+										<span class="font-semibold"id="minus">-</span>
+									</button>
             						<input type="text" class="focus:outline-none bg-gray-100 border h-6 w-8 rounded text-sm px-2 mx-2" value="1" id="num">
             						<span class="font-semibold " id="plus" >+</span>
             					</div>
 
             					<div class="pr-8 ">
             						
-            						<span class="text-xs font-medium">$10.50</span>
+            						<span class="text-xs font-medium">{{$cart->price}}</span>
             					</div>
             					<div>
             						<i class="fa fa-close text-xs font-medium"></i>
@@ -196,35 +200,7 @@
     </div>
 </div>
 
-{{-- <script>
-	const plus= document.queryselector('#plus'),
-	minus=document.queryselector('#minus'),
-	num=document.queryselector('#num');
 
-	let a=1;
-
-	plus.addEventListener("click",()=>	
-	{
-		a++;
-		a=(a<10)?"0"+a:a;
-		num.innerText=a;
-		console.log(a);
-	}); 	 	 	
-
-
-	minus.addEventListener("click",()=>	
-	{
-		if(a>1)
-		{
-			a--;
-			a=(a<10)?"0"+a:a;
-			num.innerText=a;
-		}
-	});
-
-
-
-</script> --}}
 
 <script>
     const plus = document.querySelector('#plus');
