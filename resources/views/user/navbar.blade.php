@@ -39,8 +39,10 @@
 
                         <a href="{{ route('user.contact') }}"
                             class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Contacts</a>
-                        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">My Orders</a>
-                      
+                        <a href="#"
+                            class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">My
+                            Orders</a>
+
                     </div>
                 </div>
             </div>
@@ -99,9 +101,9 @@
                 Account</a>
             {{-- <a href="{{ '/userlogin' }}"
                 class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Login</a> --}}
-              
-            {{-- <a href="{{ '/register' }}"
+
+    {{-- <a href="{{ '/register' }}"
                 class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Register</a> --}}
-        </div>
+    </div>
     {{-- </div>  --}}
 </nav>

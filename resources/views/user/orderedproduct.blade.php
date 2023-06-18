@@ -23,22 +23,16 @@
     @include('user.navbar')
 
 
-    @include('user.slider')
 
-    @include('user.showcategory')
+
+
+
+
+
 
 
     @include('user.product')
 
-
-
-    {{-- @include('user.body') --}}
-
-    <div>
-        @yield('content')
-    </div>
-
-    @include('user.contact')
 
     @include('user.footer')
 

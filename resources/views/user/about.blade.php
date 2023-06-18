@@ -18,8 +18,8 @@
 
 <body>
 
-      
-    
+
+
     {{-- @include('user.navbar') --}}
 
 
@@ -28,7 +28,7 @@
     </div>
     <div class="flex flex-wrap items-center justify-center mb-8">
         <img class="w-48 h-48 mx-4 my-2" src="{{ asset('images\logo.jpg') }}" alt="Store Logo">
-        <img class="w-48 h-48 mx-4 my-2" src="{{ asset('images\product\6472d8c164172.jpg')}}" alt="Product Photos">
+        <img class="w-48 h-48 mx-4 my-2" src="{{ asset('images\product\6472d8c164172.jpg') }}" alt="Product Photos">
     </div>
     <div class="mt-5 ml-10 max-w-sm grid grid-cols-1">
         <p class="text-lg text-gray-700 mb-8">We are a leading ecommerce store dedicated to providing high-quality

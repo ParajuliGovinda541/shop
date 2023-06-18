@@ -131,14 +131,14 @@ class CartController extends Controller
      */
     public function update(Request $request, Cart $cart)
     {
-        //
+        
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Cart $cart)
+    public function destroy($id)
     {
-        //
+     
     }
 }

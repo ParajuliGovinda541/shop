@@ -117,5 +117,13 @@ public function viewcategory($id)
     // return view('user.viewcategory',compact('categories','itemsincart','products')); 
 }
 
+public function destroy($id)
+{
+    $cart = Cart::find($id);
+    $cart->delete();
+    return redirect(route('user.mycart'))->with('success','cart deleted sucessfully!');
+}
+
+
 }   
 

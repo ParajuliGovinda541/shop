@@ -20,7 +20,7 @@
 <body>
     @include('user.navbar')
 
-    <form action="{{route('cart.store')}}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('cart.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class=" mt-5 ml-10 mb-20 max-w-sm rounded overflow-hidden shadow-lg">
             <img class="w-full" src="{{ asset('images/product/' . $product->image_url) }}" alt="Product Image">
@@ -31,19 +31,21 @@
 
             </div>
             <div class="px-6 py-4">
-                <input type="hidden" name="product_id" value="{{$product->id}}" readonly>
-                <input type="number" value="1" min="1" class="" name="qty" value="qty" >
-                <input type="hidden" class="" name="product_name" value="{{$product->product_name}}" >
+                <input type="hidden" name="product_id" value="{{ $product->id }}" readonly>
+                <input type="number" value="1" min="1" max="{{ $product->quantity }}" name="qty"
+                    value="qty">
+                <input type="hidden" class="" name="product_name" value="{{ $product->product_name }}">
 
-                <input type="hidden"  name="image_url" value="{{$product->image_url}}" >
+                <input type="hidden" name="image_url" value="{{ $product->image_url }}">
 
-                    <input type="submit"  value="Add to cart" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                
+                <input type="submit" value="Add to cart"
+                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+
             </div>
         </div>
 
     </form>
- 
+
     @include('user.footer')
 
 </body>

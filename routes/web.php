@@ -55,7 +55,19 @@ Route::get('/user/contact', [ContactController::class, 'contactpage'])->name('us
 Route::middleware(['auth'])->group(function(){
     Route::get('/mycart',[CartController::class,'mycart'])->name('user.mycart');
     Route::post('/mycart/store',[CartController::class,'store'])->name('cart.store');
+
+    
 });
+
+
+//route for cart deletion'
+Route::middleware(['auth'])->group(function(){
+    
+    Route::get('/mycart/{id}/destroy', [FrontuserController::class,'destroy'])->name('user.mycart.destroy');
+ 
+});
+
+
 
 Route::get('/user/viewcategory/{id}', [FrontuserController::class, 'viewcategory'])->name('user.viewcategory');
 
