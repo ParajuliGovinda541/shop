@@ -40,6 +40,9 @@ Route::get('/user/product', [FrontuserController::class, 'product'])->name('user
 
 
 
+
+
+
 //Route for userside
 
 
@@ -57,14 +60,16 @@ Route::middleware(['auth'])->group(function(){
     Route::post('/mycart/store',[CartController::class,'store'])->name('cart.store');
 
     
+
 });
 
 
-//route for cart deletion'
+//route for cart deletion and order'
 Route::middleware(['auth'])->group(function(){
     
     Route::get('/mycart/{id}/destroy', [FrontuserController::class,'destroy'])->name('user.mycart.destroy');
- 
+ // route for user order store
+Route::post('/mycart/orderedproduct', [FrontuserController::class, 'orderedproduct'])->name('order.orderedproduct');
 });
 
 

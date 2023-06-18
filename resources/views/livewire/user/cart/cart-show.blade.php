@@ -4,12 +4,15 @@
      
 
         <h1 class="text-xl font-medium ">Shopping Cart</h1>
+        <form action="{{ route('order.orderedproduct')}}" method="POST">
+           
         @forelse ($carts as $cart)
        
-        <div class="flex justify-between items-center mt-6 pt-6">
-            
+        <div class="flex justify-between items-center mt-2 pt-6">
+           
             <div class="flex  items-center">
-            
+               
+               
 
                 <img src="{{ asset('images/product/' . $cart->image_url) }}" alt="{{ asset('images/cart/' . $cart->image_url) }}" width="60" class="rounded-full ">
             
@@ -17,8 +20,18 @@
                 <div class="flex flex-col ml-3">
 
 
-                    <span class="md:text-md font-medium">{{$cart->id}}</span>
+                    <span   value="user_id"  class="md:text-md font-medium">{{$cart->user_id}}  </span>
+
+
+
+
+                    <input type="hidden" name="user_id" value="{{$cart->user_id}}">
+                    
+                    <input type="hidden" name="cart_id" value="{{$cart->id}}">
+
+
                 </div>	
+            	
                 <div class="flex flex-col ml-3">
 
                     <span class="md:text-md font-medium">{{$cart->product_name}}</span>
@@ -28,6 +41,7 @@
             <div class="pr-4">
                     
                 <span class="text-sm px-2">{{$cart->product->price}}</span>
+                
                 
             </div>
             <div class="flex justify-center items-center">
@@ -44,16 +58,18 @@
                 <div class="pr-4">
                     
                     <span class="text-xs font-medium">{{$cart->product->price*$cart->qty}}</span>
+                    <input type="hidden" name="amount" value=" {{$cart->product->price*$cart->qty}} ">
+
                     @php
                         $totalprice +=$cart->product->price*$cart->qty
                     @endphp
                 </div>
-                <div class="pr-2">
-                    <button class="bg-yellow-500 hover:bg-red-700 text-white  py-0 px-1 border border-blue-700 rounded">
+                {{-- <div class="pr-2">
+                    <a class="bg-yellow-500 hover:bg-red-700 text-white  py-0 px-1 border border-blue-700 rounded">
                         Update
-                      </button>
+                      </a>
                     
-                </div>
+                </div> --}}
              <div class="pr-2">
                     <a onclick="return confirm('Are you sure want to delete ?')" href="{{route('user.mycart.destroy',$cart->id)}}" class="bg-red-500 hover:bg-blue-700 text-white font-bold py-0 px-1 border border-blue-700 rounded">
                         Delete
@@ -61,8 +77,8 @@
                     
                 </div>
                 <div class="pr-2">
-                    <form action="">
-                        <button  class="bg-green-500 hover:bg-blue-700 text-white font-bold py-0 px-1 border border-blue-700 rounded">
+                        @csrf
+                        <button type="submit" class="bg-green-500 hover:bg-blue-700 text-white font-bold py-0 px-1 border border-blue-700 rounded">
                             Order
                            </button>
                     </form>

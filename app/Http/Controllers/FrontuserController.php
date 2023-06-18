@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Cart;
+use App\Models\Order;
+use Carbon\Carbon;
+
     
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
@@ -124,6 +127,29 @@ public function destroy($id)
     return redirect(route('user.mycart'))->with('success','cart deleted sucessfully!');
 }
 
+public function orderedproduct(Request $request)
+{
+    // dd($request->all());
 
+    $data 
+    = $request->validate([ 
+        'amount' => 'required',
+       
+        
+        'cart_id' => 'required',
+
+
+    ]);
+    $currentDate = Carbon::now()->toDateString();
+    $data['status'] = 'pending';
+    $data['date'] = $currentDate;
+
+    
+    $data['user_id'] = auth()->user()->id;
+
+    Order::create($data);
+
+    return redirect(route('user.mycart'))->with('success','item orderd sucessfully!');
+}
 }   
 

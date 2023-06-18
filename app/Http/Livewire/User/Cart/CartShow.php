@@ -14,6 +14,14 @@ class CartShow extends Component
     {
         $this->carts=Cart::where('user_id', auth()->user()->id)->get();
     }
+
+
+    // public function order($cardId)
+    // {
+    // // dd($cardId);
+    // $cart=Cart::find($cardId);
+    // dd($cart);
+    // }
     
     public function decrementQuantity(int $cardId)
 
