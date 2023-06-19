@@ -40,6 +40,8 @@ Route::get('/user/product', [FrontuserController::class, 'product'])->name('user
 
 
 
+// route for user profile
+Route::get('/user/profileedit', [FrontuserController::class, 'profileedit'])->name('user.profileedit');
 
 
 
@@ -59,6 +61,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/mycart',[CartController::class,'mycart'])->name('user.mycart');
     Route::post('/mycart/store',[CartController::class,'store'])->name('cart.store');
 
+
     
 
 });
@@ -70,7 +73,14 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/mycart/{id}/destroy', [FrontuserController::class,'destroy'])->name('user.mycart.destroy');
  // route for user order store
 Route::post('/mycart/orderedproduct', [FrontuserController::class, 'orderedproduct'])->name('order.orderedproduct');
+// route for order display
+Route::get('/orderedproduct',[FrontuserController::class,'ordertable'])->name('user.orderedproduct');
+// route for checkout
+Route::get('/checkout',[FrontuserController::class,'checkout'])->name('user.checkout');
 });
+
+
+
 
 
 

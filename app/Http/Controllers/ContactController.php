@@ -3,14 +3,31 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contact;
+use App\Models\cart;
+
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
     
+
+    public function include()
+    {
+        if(!auth()->user())
+        {
+            return 0;
+        }
+        else
+        {
+            return Cart::where('user_id',auth()->user()->id)->count();
+        }
+    }
+
     public function contactpage()
     {
-        return view('user.contact');
+        $itemsincart = $this->include();
+
+        return view('user.contact',compact('itemsincart'));
     }
 
 
@@ -39,7 +56,7 @@ class ContactController extends Controller
         $data = $request->validate([
             'name'=>'required',
             'email'=>'required',
-            'message'=>'required'
+            'message'=>'required',
 
         ]);
 
@@ -47,7 +64,7 @@ class ContactController extends Controller
         
 
         Contact::create($data);
-        return redirect(route('contact.index'))->with('success','Category created sucessfully!');
+        return redirect(route('user.contact'))->with('success','Feedback sent sucessfully!');
     }
 
     /**

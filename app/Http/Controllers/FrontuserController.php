@@ -54,7 +54,8 @@ class FrontuserController extends Controller
     {
         $itemsincart = $this->include();
 
-        return view('user.viewproduct',compact('product','itemsincart'));
+
+        return view('user.viewproduct',compact('product','itemsincart',));
     }
 
 
@@ -134,14 +135,14 @@ public function orderedproduct(Request $request)
     $data 
     = $request->validate([ 
         'amount' => 'required',
-       
-        
-        'cart_id' => 'required',
+        'shipping_address'=>'required',
+        'phone'=>'required',
+        'person_name'=>'required',
 
 
     ]);
     $currentDate = Carbon::now()->toDateString();
-    $data['status'] = 'pending';
+    $data['status'] = 'Pending';
     $data['date'] = $currentDate;
 
     
@@ -151,5 +152,30 @@ public function orderedproduct(Request $request)
 
     return redirect(route('user.mycart'))->with('success','item orderd sucessfully!');
 }
+
+public function ordertable()
+{
+    $itemsincart = $this->include();
+    $orders = Order::where('user_id', auth()->user()->id)->get();
+
+    return view('user.orderedproduct',compact('itemsincart','orders'));
+
+}
+
+public function profileedit( Request $id)
+{
+
+    $user= User::find($id);
+    return view('user.profileedit',compact('user'));
+
+}
+
+public function checkout()
+{
+    $itemsincart= $this->include();
+
+   return view('user.checkout',compact('itemsincart'));
+
 }   
+}
 

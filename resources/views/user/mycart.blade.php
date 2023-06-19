@@ -18,12 +18,6 @@
                         <div class="md:grid md:grid-cols-3 gap-2 ">
                             <livewire:user.cart.cart-show />
 
-
-
-
-
-
-
                             <div class=" p-5 bg-gray-800 rounded overflow-visible">
 
                                 <span class="text-xl font-medium text-gray-100 block pb-3">Card Details</span>
@@ -129,9 +123,8 @@
 
 
 
-                                <button
-                                    class="h-12 w-full bg-blue-500 rounded focus:outline-none text-white hover:bg-blue-600">Check
-                                    Out</button>
+                                <a href="{{route('user.checkout')}}"  class="h-12 w-full bg-blue-500 rounded focus:outline-none text-white hover:bg-blue-600">Check
+                                    Out</a>
 
 
 

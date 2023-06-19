@@ -39,7 +39,7 @@
 
                         <a href="{{ route('user.contact') }}"
                             class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Contacts</a>
-                        <a href="#"
+                        <a href="{{route('user.orderedproduct')}}"
                             class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">My
                             Orders</a>
                             <a href="{{route('user.product')}}"

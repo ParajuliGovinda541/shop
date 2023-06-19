@@ -9,8 +9,8 @@
 <script>
     setTimeout(function(){
 
-        $('#messagebox').fadeOut(3500);
+        $('#messagebox').fadeOut(500);
         
-    }, 1000);
+    }, 100);
 </script>
 @endif

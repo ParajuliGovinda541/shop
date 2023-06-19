@@ -1,9 +1,6 @@
 @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-
-{{-- @include('user.navbar');  --}}
-
-
+@include('layouts.message'); 
 
 <!-- Container for demo purpose -->
 <div class="container my-24 px-6 mx-auto">
@@ -39,7 +36,7 @@
                             name="name" id="exampleInput7" placeholder="Name">
                     </div>
                     <div class="form-group mb-6">
-                        <input type="email"
+                        <input type="email" 
                             class="form-control block
               w-full
               px-3

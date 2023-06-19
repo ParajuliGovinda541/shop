@@ -14,10 +14,19 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
-            $table->foreignId('cart_id')->constrained();
+            $table->string('cart_id');
             $table->string('amount');
             $table->string('status');
             $table->string('date');
+            $table->string('payement_method');
+            $table->string('shipping_address');
+            $table->string('phone');
+            $table->string('person_name');
+
+
+
+
+
             $table->timestamps();
         });
     }

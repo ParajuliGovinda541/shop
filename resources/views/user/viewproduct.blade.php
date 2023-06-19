@@ -46,6 +46,15 @@
 
     </form>
 
+    
+<div>
+    <h1 class="text-center text-4xl">Other Products</h1>
+</div>
+<br>
+
+
+
+
     @include('user.footer')
 
 </body>

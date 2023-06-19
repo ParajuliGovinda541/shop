@@ -21,7 +21,7 @@
                 <a href=""></a></span>
             @if (auth()->user())
                 <div>
-                    <a href="">{{ auth()->user()->name }} /</a>
+                    <a href="{{route('user.profileedit')}}">{{ auth()->user()->name }} /</a>
                     <form class="inline" action="{{ route('logout') }}" method="POST">
                         @csrf
                         <button type="submit">
