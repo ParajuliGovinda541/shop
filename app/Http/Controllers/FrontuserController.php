@@ -6,7 +6,10 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Cart;
 use App\Models\Order;
+use App\Models\wishlist;
+
 use Carbon\Carbon;
+
 
     
 use Illuminate\Support\Facades\Hash;
@@ -130,27 +133,36 @@ public function destroy($id)
 
 public function orderedproduct(Request $request)
 {
-    // dd($request->all());
-
+    //  dd($request->all());
     $data 
     = $request->validate([ 
-        'amount' => 'required',
-        'shipping_address'=>'required',
+        'street'=>'required',
+        'city'=>'required',
+        'country'=>'required',
+        'zipcode'=>'required|numeric',
         'phone'=>'required',
         'person_name'=>'required',
+        'payement_method'=>'required',
+
 
 
     ]);
+
     $currentDate = Carbon::now()->toDateString();
     $data['status'] = 'Pending';
+    $data['amount'] = '4400';
     $data['date'] = $currentDate;
-
-    
+    $carts=Cart::where('user_id',auth()->user()->id)->pluck('id')->toArray();
+$data['cart_id']= implode(',',$carts);
     $data['user_id'] = auth()->user()->id;
 
-    Order::create($data);
 
-    return redirect(route('user.mycart'))->with('success','item orderd sucessfully!');
+    //  dd($data);
+
+    Order::create($data);
+    Cart::destroy($carts);
+
+    return redirect(route('user.orderedproduct'))->with('success','item orderd sucessfully!');
 }
 
 public function ordertable()
@@ -173,9 +185,19 @@ public function profileedit( Request $id)
 public function checkout()
 {
     $itemsincart= $this->include();
+    $carts=Cart::where('user_id', auth()->user()->id)->get();
 
-   return view('user.checkout',compact('itemsincart'));
+   return view('user.checkout',compact('itemsincart','carts'));
 
 }   
+
+// public function wishliststore(Request $request)
+
+// {
+//     $product=Product::all();
+//     return view('user.wishlist',compact('product'));
+
+// }
+
 }
 

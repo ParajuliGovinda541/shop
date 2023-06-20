@@ -4,7 +4,7 @@
 
 
     <h1 class="text-xl font-medium ">Shopping Cart</h1>
-    <form action="{{ route('order.orderedproduct') }}" method="POST">
+    <form action="" method="POST">
         @csrf
 
         @forelse ($carts as $cart)
@@ -48,15 +48,13 @@
                 <div class="flex justify-center items-center">
 
                     <div class="pr-4 flex cursor-pointer">
-                        <button type="button" wire:loading.attr="disabled"
-                            wire:click="decrementQuantity({{ $cart->id }})"
+                        <button type="button" wire:click="decrementQuantity({{ $cart->id }})"
                             class="fa fa-minus"id="minus"></button>
 
                         <input type="text"
                             class="focus:outline-none bg-gray-100 border h-6 w-8 rounded text-sm px-2 mx-2"
                             value="{{ $cart->qty }}" id="num">
-                        <button type="button" wire:loading.attr="disabled"
-                            wire:click="incrementQuantity({{ $cart->id }})"
+                        <button type="button" wire:click="incrementQuantity({{ $cart->id }})"
                             class="fa fa-plus"id="plus"></button>
 
                     </div>
@@ -85,18 +83,18 @@
                         </a>
 
                     </div>
-                        {{-- <div class="pr-2">
+                    {{-- <div class="pr-2">
                             <button type="submit"
                                 class="bg-green-500 hover:bg-blue-700 text-white font-bold py-0 px-1 border border-blue-700 rounded">
                                 Order
                             </button>
 
     </div> --}}
-</form>
+    </form>
 
-<div>
-    <i class="fa fa-close text-xs font-medium"></i>
-</div>
+    <div>
+        <i class="fa fa-close text-xs font-medium"></i>
+    </div>
 
 </div>
 

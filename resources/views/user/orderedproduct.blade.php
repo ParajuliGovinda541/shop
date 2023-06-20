@@ -1,4 +1,6 @@
 @include('user.master')
+@include('layouts.message')
+
 <!DOCTYPE html>
 <html lang="en">
 

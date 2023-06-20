@@ -77,6 +77,11 @@ Route::post('/mycart/orderedproduct', [FrontuserController::class, 'orderedprodu
 Route::get('/orderedproduct',[FrontuserController::class,'ordertable'])->name('user.orderedproduct');
 // route for checkout
 Route::get('/checkout',[FrontuserController::class,'checkout'])->name('user.checkout');
+
+
+// route for wish list
+// Route::get('/wishlist/wishlist',[FrontuserController::class,'wishliststore'])->name('user.wishlist');
+
 });
 
 

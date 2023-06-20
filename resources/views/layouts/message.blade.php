@@ -11,6 +11,6 @@
 
         $('#messagebox').fadeOut(500);
         
-    }, 100);
+    }, 1000);
 </script>
 @endif

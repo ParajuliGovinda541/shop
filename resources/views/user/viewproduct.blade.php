@@ -39,8 +39,13 @@
                 <input type="hidden" name="image_url" value="{{ $product->image_url }}">
 
                 <input type="submit" value="Add to cart"
-                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-
+                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">
+                    {{-- <form action="{{route('user.wishlist')}}" method="POST">
+                        @csrf
+                    <button type="button" value="Add to Wishlist"
+                    class="bg-yellow-500 hover:bg-green-700 text-white font-bold py-1 px-2rounded">
+                    </button>
+                </form> --}}
             </div>
         </div>
 

@@ -8,7 +8,7 @@ use Livewire\Component;
 
 class CartShow extends Component
 {
-    public $carts,$totalprice=0;
+    public  $carts,$totalprice=0;
 
     public function mount()
     {
@@ -24,18 +24,16 @@ class CartShow extends Component
     // }
     
     public function decrementQuantity(int $cardId)
-
+   
         {
             $cardData= Cart::where('id',$cardId)->where('user_id',auth()->user()->id)->first();
-            if($cardData)
-            {
-                $cardData->decrement('qty');
-
-            }
-            else
-            {
-
-            }
+        
+            
+                
+                $qty=['qty'=>$cardData->qty-1];
+               Cart::find($cardId)->update($qty);
+            
+           
         }
         public function incrementQuantity(int $cardId)
         {

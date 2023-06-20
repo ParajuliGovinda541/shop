@@ -29,6 +29,8 @@
                     </form>
                     <a href="{{ route('user.mycart') }}">
                         <i class="fas fa-shopping-cart"></i> [ {{ $itemsincart }} ]</a>
+                        <a href="">
+                            <i class="fa fa-heart" aria-hidden="true"></i> [12]</a>
                 </div>
             @else
                 <span><a href="{{ route('userlogin') }}">Login/Register</a></span>

@@ -19,7 +19,10 @@ return new class extends Migration
             $table->string('status');
             $table->string('date');
             $table->string('payement_method');
-            $table->string('shipping_address');
+            $table->string('street');
+            $table->string('city');
+            $table->string('country');
+            $table->string('zipcode');
             $table->string('phone');
             $table->string('person_name');
 
