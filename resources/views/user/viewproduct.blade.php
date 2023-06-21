@@ -40,12 +40,8 @@
 
                 <input type="submit" value="Add to cart"
                     class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">
-                    {{-- <form action="{{route('user.wishlist')}}" method="POST">
-                        @csrf
-                    <button type="button" value="Add to Wishlist"
-                    class="bg-yellow-500 hover:bg-green-700 text-white font-bold py-1 px-2rounded">
-                    </button>
-                </form> --}}
+                  
+                </form>
             </div>
         </div>
 
@@ -54,6 +50,7 @@
     
 <div>
     <h1 class="text-center text-4xl">Other Products</h1>
+
 </div>
 <br>
 

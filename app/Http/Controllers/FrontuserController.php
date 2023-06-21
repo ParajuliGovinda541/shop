@@ -64,8 +64,6 @@ class FrontuserController extends Controller
 
     public function home()
     {
-        // $products = Product::paginate(2);
-        // $categories = Category::orderBy('priority')->get();
         return view('user.index');
     }
 
@@ -140,12 +138,9 @@ public function orderedproduct(Request $request)
         'city'=>'required',
         'country'=>'required',
         'zipcode'=>'required|numeric',
-        'phone'=>'required',
+        'phone'=>'required|numeric',
         'person_name'=>'required',
         'payement_method'=>'required',
-
-
-
     ]);
 
     $currentDate = Carbon::now()->toDateString();
@@ -155,10 +150,9 @@ public function orderedproduct(Request $request)
     $carts=Cart::where('user_id',auth()->user()->id)->pluck('id')->toArray();
 $data['cart_id']= implode(',',$carts);
     $data['user_id'] = auth()->user()->id;
+    //   dd($data);
 
-
-    //  dd($data);
-
+   
     Order::create($data);
     Cart::destroy($carts);
 
@@ -169,8 +163,8 @@ public function ordertable()
 {
     $itemsincart = $this->include();
     $orders = Order::where('user_id', auth()->user()->id)->get();
-
-    return view('user.orderedproduct',compact('itemsincart','orders'));
+   $product= Product::all();
+    return view('user.orderedproduct',compact('itemsincart','orders','product'));
 
 }
 
@@ -191,13 +185,20 @@ public function checkout()
 
 }   
 
-// public function wishliststore(Request $request)
+public function wishliststore(Request $request)
 
-// {
-//     $product=Product::all();
-//     return view('user.wishlist',compact('product'));
+{
+    dd($request);
+    // $data = $request->validate([
+    //     'user_id' => 'required',
+    //     'product_id' => 'required'
+    // ]);
 
-// }
+    $product=Product::all();
+    // Wishlist::create($data);
+    return view('user.wishlist',compact('product'));
+
+}
 
 }
 

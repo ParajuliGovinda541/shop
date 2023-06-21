@@ -57,7 +57,7 @@
                 </div>
                 <div class="mt-4">
                     <input type="submit" class="px-4 py-1 text-white font-light tracking-wider bg-gray-900 rounded" value="Confirm">
-                    <button class="px-4 ml-72 py-1 text-white font-light tracking-wider bg-gray-900 rounded" type="submit">Cancel</button>
+                    <a  href="{{route('user.mycart')}}" class="px-4 ml-72 py-1 text-white font-light tracking-wider bg-red-500 rounded" type="submit">Cancel</a>
                 </div>
         </div>
         <div class="leading-loose j">

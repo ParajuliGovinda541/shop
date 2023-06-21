@@ -29,7 +29,7 @@
                     </form>
                     <a href="{{ route('user.mycart') }}">
                         <i class="fas fa-shopping-cart"></i> [ {{ $itemsincart }} ]</a>
-                        <a href="">
+                        <a href="{{route('user.wishlist')}}">
                             <i class="fa fa-heart" aria-hidden="true"></i> [12]</a>
                 </div>
             @else

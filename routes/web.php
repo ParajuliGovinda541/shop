@@ -80,8 +80,8 @@ Route::get('/checkout',[FrontuserController::class,'checkout'])->name('user.chec
 
 
 // route for wish list
-// Route::get('/wishlist/wishlist',[FrontuserController::class,'wishliststore'])->name('user.wishlist');
-
+ Route::get('/wishlist',[FrontuserController::class,'wishliststore'])->name('user.wishlist');
+ 
 });
 
 
