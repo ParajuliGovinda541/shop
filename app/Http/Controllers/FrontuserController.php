@@ -6,8 +6,6 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Cart;
 use App\Models\Order;
-use App\Models\wishlist;
-
 use Carbon\Carbon;
 
 

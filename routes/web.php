@@ -40,7 +40,8 @@ Route::post('/userregister', [FrontuserController::class, 'userstore'])->name('u
 Route::get('/user/product', [FrontuserController::class, 'product'])->name('user.product');
 
 
-Route::post('/user/wishlist/{id}', [WishlistController::class, 'store'])->name('user.wishlist.store');
+Route::get('/user/wishlist', [WishlistController::class, 'index'])->name('user.wishlist');
+Route::get('/user/wishlist/{id}', [WishlistController::class, 'store'])->name('user.wishlist.store');
 
 
 
