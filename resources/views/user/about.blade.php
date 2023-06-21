@@ -20,7 +20,7 @@
 
 
 
-    {{-- @include('user.navbar') --}}
+    @include('user.navbar')
 
 
     <div>

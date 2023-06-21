@@ -116,46 +116,86 @@
             </tr>
         </thead>
         <tbody>
-            @forelse ($orders as $order)
 
-            <tr >
-            
 
-                <td class="px-6 py-4" >
-                    {{$order->id}}
-                </td>
-                <td class="px-6 py-4">
-                    {{$order->user->name}}
-                 
-                </td>
-                <td class="px-6 py-4">
-                    {{$order->cart_id}}
+          @foreach($orders as $order)
+          @foreach($order->carts as $cart)
+          <tr >
+                
 
-                </td>
-                <td class="px-6 py-4">
-                    {{$order->amount}}
-
-                </td>
-                <td class="px-6 py-4">
-                    {{$order->status}}
-
-                </td>
-                <td class="px-6 py-4">
-                    {{$order->date}}
-
-                </td>
-                <td class="px-6 py-4">
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                </td>
-                @empty
-                    <div>
-                        <h1 class="text-center">No Orders Available</h1>
-                    </div>
+                    <td class="px-6 py-4" >
+                        {{$order->id}}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{$order->user->name}}
                     
-             
-            </tr>
-           
-            @endforelse
+                    </td>
+                    <td class="px-6 py-4">
+                        {{$order->cart_id}}
+
+                    </td>
+                    <td class="px-6 py-4">
+                        {{$order->amount}}
+
+                    </td>
+                    <td class="px-6 py-4">
+                        {{$order->status}}
+
+                    </td>
+                    <td class="px-6 py-4">
+                        {{$order->date}}
+
+                    </td>
+
+          {{-- <tr>
+              <td><img class="w-16" src="{{asset('images/product/'.$cart->product->image_url)}}" alt=""></td>
+              <td >{{$cart->product->name}}</td>
+              <td>{{$order->order_date}}</td>
+              <td>{{$cart->product->price}}</td>
+              <td>{{$order->status}}</td>
+          </tr> --}}
+          @endforeach
+      @endforeach
+                {{-- @forelse ($orders as $order)
+
+                <tr >
+                
+
+                    <td class="px-6 py-4" >
+                        {{$order->id}}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{$order->user->name}}
+                    
+                    </td>
+                    <td class="px-6 py-4">
+                        {{$order->cart_id}}
+
+                    </td>
+                    <td class="px-6 py-4">
+                        {{$order->amount}}
+
+                    </td>
+                    <td class="px-6 py-4">
+                        {{$order->status}}
+
+                    </td>
+                    <td class="px-6 py-4">
+                        {{$order->date}}
+
+                    </td>
+                    <td class="px-6 py-4">
+                        <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                    </td>
+                    @empty
+                        <div>
+                            <h1 class="text-center">No Orders Available</h1>
+                        </div>
+                        
+                
+                </tr>
+              
+                @endforelse --}}
            
              
         </tbody>

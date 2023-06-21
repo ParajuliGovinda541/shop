@@ -1,5 +1,5 @@
 @include('layouts.message')
-
+@include('user.master')
 <!DOCTYPE html>
 <html lang="en">
 

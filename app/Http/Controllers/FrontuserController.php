@@ -31,7 +31,7 @@ class FrontuserController extends Controller
         }
         else
         {
-            return Cart::where('user_id',auth()->user()->id)->count();
+            return Cart::where('user_id',auth()->user()->id)->where('is_ordered',false)->count();
         }
     }
 
@@ -145,16 +145,26 @@ public function orderedproduct(Request $request)
 
     $currentDate = Carbon::now()->toDateString();
     $data['status'] = 'Pending';
-    $data['amount'] = '4400';
     $data['date'] = $currentDate;
-    $carts=Cart::where('user_id',auth()->user()->id)->pluck('id')->toArray();
-$data['cart_id']= implode(',',$carts);
+    $carts=Cart::where('user_id',auth()->user()->id)->where('is_ordered',false)->get();
+$totalprice=0;
+
+    foreach($carts as $cart)
+    {
+        $total=$cart->product->price * $cart->qty;
+        $totalprice += $total;
+
+    }
+    $data['amount'] = $totalprice;
+    $ids=$carts->pluck('id')->toArray();
+
+$data['cart_id']= implode(',',$ids);
     $data['user_id'] = auth()->user()->id;
-    //   dd($data);
+    //    dd($data);
 
    
     Order::create($data);
-    Cart::destroy($carts);
+    Cart::whereIn('id',$ids)->update(['is_ordered'=>true]);
 
     return redirect(route('user.orderedproduct'))->with('success','item orderd sucessfully!');
 }
@@ -163,8 +173,20 @@ public function ordertable()
 {
     $itemsincart = $this->include();
     $orders = Order::where('user_id', auth()->user()->id)->get();
-   $product= Product::all();
-    return view('user.orderedproduct',compact('itemsincart','orders','product'));
+    $products= Product::all();
+    foreach($orders as $order)
+    {
+        $cartids = explode(',',$order->cart_id);
+        $carts = [];
+        foreach($cartids as $cartid)
+        {
+            $cart = cart::find($cartid);
+            array_push($carts,$cart);
+        }
+        $order->carts = $carts;
+    }
+    // dd($carts);
+    return view('user.orderedproduct',compact('itemsincart','orders','products'));
 
 }
 
@@ -179,26 +201,11 @@ public function profileedit( Request $id)
 public function checkout()
 {
     $itemsincart= $this->include();
-    $carts=Cart::where('user_id', auth()->user()->id)->get();
+    $carts=Cart::where('user_id', auth()->user()->id)->where('is_ordered',false)->get();
 
    return view('user.checkout',compact('itemsincart','carts'));
 
 }   
-
-public function wishliststore(Request $request)
-
-{
-    dd($request);
-    // $data = $request->validate([
-    //     'user_id' => 'required',
-    //     'product_id' => 'required'
-    // ]);
-
-    $product=Product::all();
-    // Wishlist::create($data);
-    return view('user.wishlist',compact('product'));
-
-}
 
 }
 

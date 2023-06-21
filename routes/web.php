@@ -8,6 +8,8 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FrontuserController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\WishlistController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,10 +40,21 @@ Route::post('/userregister', [FrontuserController::class, 'userstore'])->name('u
 Route::get('/user/product', [FrontuserController::class, 'product'])->name('user.product');
 
 
+Route::post('/user/wishlist/{id}', [WishlistController::class, 'store'])->name('user.wishlist.store');
+
+
+
 
 
 // route for user profile
-Route::get('/user/profileedit', [FrontuserController::class, 'profileedit'])->name('user.profileedit');
+Route::get('/user/myprofile', [UserController::class, 'index'])->name('user.myprofile');
+Route::get('/user/profileedit/{id}', [UserController::class, 'edit'])->name('user.profileedit');
+Route::post('/user/profileedit/{id}/update', [UserController::class, 'update'])->name('user.profileedit.update');
+
+
+
+// Route::get('/user/profileedit', [UserController::class, 'update'])->name('user.profileedit');
+
 
 
 

@@ -19,8 +19,14 @@
                             <livewire:user.cart.cart-show />
 
                             <div>
+                                @if ($carts->isEmpty())
+
+                                    <p class="bg-red-700">Please Add Item First To Process Further</p>
+                                @else
                                 <a href="{{route('user.checkout')}}"  class="h-12 w-full bg-blue-500 rounded focus:outline-none text-white hover:bg-blue-600">Check
                                     Out</a>
+                                @endif
+                              
                             </div>
                           
                           
