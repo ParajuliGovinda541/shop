@@ -183,7 +183,6 @@ public function ordertable()
         }
         $order->carts = $carts;
     }
-    // dd($carts);
     return view('user.orderedproduct',compact('itemsincart','orders','products'));
 
 }

@@ -10,27 +10,7 @@
 
     {{-- Cards start here --}}
     @foreach ($products as $product)
-        {{-- <div class=" mt-5 ml-10 max-w-sm rounded overflow-hidden shadow-lg">
-            <div class="option">
-                <a href="{{ route('user.viewproduct', $product->id) }}" class="option 1"> Product Details</a>
-                <a href="#" class="option 2"> Buy Now</a>
-
-            </div>
-            <img class="w-full" src="{{ asset('images/product/' . $product->image_url) }}" alt="Product Image">
-            <div class="px-5 py-3">
-                <div class="font-bold text-xl mb-2">{{ $product->product_name }}</div>
-                <p class="text-gray-700 text-base">Price: Rs {{ $product->price }}</p>
-            </div>
-            <div class="px-6 py-4">
-
-
-
-
-
-
-            </div>
-        </div> --}}
-        <div class="mt-5 ml-10 max-w-sm rounded overflow-hidden shadow-lg relative">
+        <div class="mt-5 ml-10 max-w-sm rounded overflow-hidden shadow-lg static">
             <div class="option">
                 <a href="{{ route('user.viewproduct', $product->id) }}" class="option 1">Product Details</a>
                 <a href="#" class="option 2">Buy Now</a>

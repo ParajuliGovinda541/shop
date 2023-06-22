@@ -21,7 +21,10 @@
                             <div>
                                 @if ($carts->isEmpty())
 
-                                    <p class="bg-red-700">Please Add Item First To Process Further</p>
+                                <div class="bg-red-500 border-t border-b border-blue-500 text-blue-700 px-4 py-3" role="alert">
+                                    <p class="font-bold text-white">Informational message</p>
+                                    <p class="text-xl font-mono">Please Add Item For Further Features.</p>
+                                  </div>
                                 @else
                                 <a href="{{route('user.checkout')}}"  class="h-12 w-full bg-blue-500 rounded focus:outline-none text-white hover:bg-blue-600">Check
                                     Out</a>

@@ -1,1 +1,1 @@
-@extends('user.master')
+@include('user.master')

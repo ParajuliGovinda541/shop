@@ -8,6 +8,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FrontuserController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WishlistController;
 
@@ -140,6 +141,23 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/contact/create', [ContactController::class, 'create'])->name('contact.create');
     Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+
+
+    //  route for order
+    Route::get('/order', [OrderController::class, 'index'])->name('admin.order.index');
+
+        Route::get('/order/{id}/edit', [OrderController::class, 'edit'])->name('admin.order.edit');
+    Route::get('/order/{id}/details', [OrderController::class, 'details'])->name('admin.order.details');
+
+
+    Route::post('/order/{id}/update', [OrderController::class, 'update'])->name('admin.order.update');
+    Route::get('/order/status/{id}/{status}', [OrderController::class, 'status'])->name('admin.order.status');
+
+
+
+
+
+
 });
 
 

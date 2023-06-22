@@ -26,7 +26,10 @@ class WishlistController extends Controller
     public function index()
 
     {
-        return view('user.wishlist');
+        $itemsincart = $this->include();
+        $categories = Category::all();
+        $products = Product::all();
+        return view('user.wishlist',compact('itemsincart', 'categories'));
     }
 
     public function store($product_id)

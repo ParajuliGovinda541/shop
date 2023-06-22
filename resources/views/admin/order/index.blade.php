@@ -1,23 +1,24 @@
-{{-- @extends('layouts.app')
+@extends('layouts.app')
 
 @section('content')
 
 
 @include('layouts.message')
-    <h2 class="font-bold text-4xl text-blue-700" >Categories</h2>
+    <h2 class="font-bold text-4xl text-blue-700" >Order</h2>
     <hr class="h-1 bg-blue-200">
 
-<div class="my-4 text-right px-10">
-    <a class="bg-amber-400 text-black px-4 py-2 rounded-lg shadow-md hover:shadow-amber-300"href="{{route('admin.category.create')}}">Add Category</a>
-</div>
+<br>
 
     <table id="mytable">
         <thead>
             <th>S.N</th>
-            <th></th>
-            <th>Image</th>
-
-
+            <th> Order Date</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>Amount</th>
+            <th>Payement Mode</th>
+            <th>Status</th>
             <th>Action</th>
 
         </thead>
@@ -25,19 +26,24 @@
             @php
             $sn=1
         @endphp
-            @foreach($categories as $category)
+            @foreach($orders as $order)
             <tr>
                 <td>{{$sn++}}</td>
+                <td>{{$order->date}}</td>
+                <td>{{$order->person_name}}</td>
+                <td>{{$order->phone}}</td>
+                <td>{{$order->street}}</td>
+                <td>{{$order->amount}}</td>
+                <td>{{$order->payement_method}}</td>
+                <td>{{$order->status}}</td>
 
 
-                <td>{{$category->categories_name}}</td>
-                <td><img  class= "w-20" src="{{asset('images/category/'.$category->image_url)}}" alt =""></td>
 
 
                 <td>
-                    <a href="{{route('admin.category.edit',$category->id)}}"class="bg-blue-600 px-2 py-1 rounded text-white hover:shadow-blue-600">Edit</a>
-                    <a onclick="return confirm('Are you sure want to delete ?')" href="{{route('admin.category.destroy',$category->id)}}"class="bg-red-600 px-2 py-1 rounded text-white hover:shadow-blue-400">Delete</a>
-
+                    <a href="{{route('admin.order.details',$order->id)}}"class="bg-blue-600 px-2 py-1 rounded text-white hover:shadow-blue-600">View Details</a>
+                    <a onclick="return confirm('Are you sure want to change status?')" href="{{route('admin.order.status',[$order->id,'Processing'])}}"class="bg-red-600 px-2 py-1 rounded text-white hover:shadow-blue-400">Processing</a>
+                    <a onclick="return confirm('Are you sure want to change status?')" href="{{route('admin.order.status',[$order->id,'Verified'])}}"class="bg-red-600 px-2 py-1 rounded text-white hover:shadow-blue-400">Ordered</a>
                 </td>
             </tr>
             @endforeach
@@ -48,4 +54,4 @@
         let table = new DataTable('#mytable');
     </script>
 
-@endsection --}}
+@endsection

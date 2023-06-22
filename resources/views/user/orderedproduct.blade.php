@@ -95,10 +95,10 @@
                     S.N
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    User Name
+                    Product Image
                  </th>
                 <th scope="col" class="px-6 py-3">
-                    cart_id
+                    Product Name
                 </th>
               
                 <th scope="col" class="px-6 py-3">
@@ -126,16 +126,14 @@
                     <td class="px-6 py-4" >
                         {{$order->id}}
                     </td>
+              <td><img class="w-16" src="{{asset('images/product/'.$cart->product->image_url)}}" alt=""></td>
+
                     <td class="px-6 py-4">
-                        {{$order->user->name}}
+                        {{$cart->product->product_name}}
                     
                     </td>
                     <td class="px-6 py-4">
-                        {{$order->cart_id}}
-
-                    </td>
-                    <td class="px-6 py-4">
-                        {{$order->amount}}
+                        {{$cart->product->price}}
 
                     </td>
                     <td class="px-6 py-4">
@@ -146,14 +144,6 @@
                         {{$order->date}}
 
                     </td>
-
-          {{-- <tr>
-              <td><img class="w-16" src="{{asset('images/product/'.$cart->product->image_url)}}" alt=""></td>
-              <td >{{$cart->product->name}}</td>
-              <td>{{$order->order_date}}</td>
-              <td>{{$cart->product->price}}</td>
-              <td>{{$order->status}}</td>
-          </tr> --}}
           @endforeach
       @endforeach
                 {{-- @forelse ($orders as $order)
