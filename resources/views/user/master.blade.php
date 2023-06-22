@@ -21,7 +21,11 @@
                 <a href=""></a></span>
             @if (auth()->user())
                 <div>
-                    <a href="{{route('user.myprofile')}}">{{ auth()->user()->name }} /</a>
+                    <button type="button">
+                    <img class="h-8 w-8 rounded-full" src="{{asset('images/user/' . auth()->user()->image_url)}}"
+                        alt="">
+                </button>
+                    <a href="{{ route('user.myprofile') }}">{{ auth()->user()->name }} </a>
                     <form class="inline" action="{{ route('logout') }}" method="POST">
                         @csrf
                         <button type="submit">
@@ -29,12 +33,15 @@
                     </form>
                     <a href="{{ route('user.mycart') }}">
                         <i class="fas fa-shopping-cart"></i> [ {{ $itemsincart }} ]</a>
-                        <a href="{{route('user.wishlist')}}">
-                            <i class="fa fa-heart" aria-hidden="true"></i> []</a>
+                    <a href="{{ route('user.wishlist') }}">
+                        <i class="fa fa-heart" aria-hidden="true"></i> []</a>
+
+
                 </div>
-            @else
-                <span><a href="{{ route('userlogin') }}">Login/Register</a></span>
-            @endif
+        </div>
+    @else
+        <span><a href="{{ route('userlogin') }}">Login/Register</a></span>
+        @endif
         </div>
 
     </nav>

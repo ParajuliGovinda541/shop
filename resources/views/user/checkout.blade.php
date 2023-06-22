@@ -95,10 +95,6 @@
     <input type="hidden" name="amount" value="{{$cart->amount}} " id="">
     <input type="hidden" name="status" value="{{$cart->status}} " id="">
     <input type="hidden" name="date" value="{{$cart->date}} " id="">
-
-
-    
-
 <tr >
             
 
@@ -116,7 +112,9 @@
   <td class="px-6 py-4" >
     {{$cart->qty}}
 </td>
-  
+<td class="px-6 py-4" >
+    {{ $cart->product->price * $cart->qty }}
+</td>
 </tr>
 @endforeach
  </tbody>

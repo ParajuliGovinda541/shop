@@ -105,14 +105,12 @@
                     Amount
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Satus
+                    Status
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Ordered Date
                 </th>
-                <th scope="col" class="px-6 py-3">
-                    Action 
-                </th>
+             
             </tr>
         </thead>
         <tbody>
@@ -121,8 +119,6 @@
           @foreach($orders as $order)
           @foreach($order->carts as $cart)
           <tr >
-                
-
                     <td class="px-6 py-4" >
                         {{$order->id}}
                     </td>

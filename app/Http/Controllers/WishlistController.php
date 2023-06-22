@@ -7,6 +7,8 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\wishlist;
 use Illuminate\Http\Request;
+use League\CommonMark\Extension\CommonMark\Node\Inline\Link;
+
 use Illuminate\Support\Facades\Auth;
 
 class WishlistController extends Controller
@@ -50,10 +52,21 @@ class WishlistController extends Controller
                 'product_id' => $product_id
             ]);
         }
+        // dd($product_id);
 
 
 
-        return redirect(route('user.index', compact('itemsincart', 'categories')))->with('success', 'Product added  in Wishlist');
+        return view('user.index', compact('itemsincart','products','categories'))->with('success', 'Product added  in Wishlist');
+    }
+
+
+    public function show()
+    {
+        $products= Wishlist::where('user_id', auth()->user()->id)->get();
+        // $products = Product::all();
+
+        // dd($wishlist);
+        return view('user.wishlist', compact('products'))    ;
     }
 
     public function wishlistcount($id)
@@ -62,7 +75,7 @@ class WishlistController extends Controller
         $categories = Category::all();
         $products = Product::all();
         $wishcount = Wishlist::where('user_id', auth()->user()->id)->count();
-        dd($wishcount);
+        // dd($wishcount);
 
         return redirect(route('user.index', compact('itemsincart', 'categories', 'wishcount')));
     }

@@ -89,7 +89,7 @@
             <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Profile</a>
           </div>
         </div> --}}
-                <div class="ml-3 relative">
+                {{-- <div class="ml-3 relative">
                     <div>
                         <button type="button"
                             class="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
@@ -98,13 +98,8 @@
                             <img class="h-8 w-8 rounded-full" src="https://avatars.githubusercontent.com/u/45869481?v=4"
                                 alt="">
                         </button>
-                    </div>
-                    <!-- Dropdown menu -->
-                    {{-- <div class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
-            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Your Profile</a>
-            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Settings</a>
-            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Sign out</a>
-          </div> --}}
+                    </div> --}}
+                  
                 </div>
             </div>
         </div>

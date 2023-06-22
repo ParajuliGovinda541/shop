@@ -54,9 +54,10 @@ class FrontuserController extends Controller
 
     {
         $itemsincart = $this->include();
+        $relatedproducts = Product::where('categories_id',$product->categories_id)->whereNot('id',$product->id)->get();
 
 
-        return view('user.viewproduct',compact('product','itemsincart',));
+        return view('user.viewproduct',compact('product','itemsincart','relatedproducts'));
     }
 
 

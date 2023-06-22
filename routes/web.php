@@ -42,7 +42,10 @@ Route::get('/user/product', [FrontuserController::class, 'product'])->name('user
 
 
 Route::get('/user/wishlist', [WishlistController::class, 'index'])->name('user.wishlist');
-Route::get('/user/wishlist/{id}', [WishlistController::class, 'store'])->name('user.wishlist.store');
+Route::POST('/user/wishlist/{id}', [WishlistController::class, 'store'])->name('wishlist.store');
+Route::get('/user/wishlist',[WishlistController::class,'show'])->name('user.wishlist');
+
+
 
 
 
@@ -95,7 +98,7 @@ Route::get('/checkout',[FrontuserController::class,'checkout'])->name('user.chec
 
 
 // route for wish list
- Route::get('/wishlist',[FrontuserController::class,'wishliststore'])->name('user.wishlist');
+//  Route::get('/wishlist',[FrontuserController::class,'wishliststore'])->name('user.wishlist');
  
 });
 
