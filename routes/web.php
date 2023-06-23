@@ -33,17 +33,13 @@ Route::get('/', [FrontuserController::class, 'home'])->name('home');
 
 // route for userregister and login
 Route::get('/userlogin', [FrontuserController::class, 'userlogin'])->name('userlogin');
-Route::get('/userregister', [FrontuserController::class, 'userregister'])->name('user.register');
+Route::get('/user/userregister', [FrontuserController::class, 'userregister'])->name('user.userregister');
 Route::post('/userregister', [FrontuserController::class, 'userstore'])->name('user.store');
 
 
 // route for product store page
 Route::get('/user/product', [FrontuserController::class, 'product'])->name('user.product');
 
-
-Route::get('/user/wishlist', [WishlistController::class, 'index'])->name('user.wishlist');
-Route::POST('/user/wishlist/{id}', [WishlistController::class, 'store'])->name('wishlist.store');
-Route::get('/user/wishlist',[WishlistController::class,'show'])->name('user.wishlist');
 
 
 
@@ -79,7 +75,11 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/mycart',[CartController::class,'mycart'])->name('user.mycart');
     Route::post('/mycart/store',[CartController::class,'store'])->name('cart.store');
 
-
+// route for wishlist
+    Route::get('/user/wishlist', [WishlistController::class, 'index'])->name('user.wishlist');
+    Route::POST('/user/wishlist/{id}', [WishlistController::class, 'store'])->name('wishlist.store');
+    Route::get('/user/wishlist',[WishlistController::class,'show'])->name('user.wishlist');
+    
     
 
 });

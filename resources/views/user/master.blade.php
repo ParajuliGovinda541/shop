@@ -29,12 +29,13 @@
                     <form class="inline" action="{{ route('logout') }}" method="POST">
                         @csrf
                         <button type="submit">
-                            <i class="fa fa-sign-out" aria-hidden="true"></i> Logout</button>
+                            <i class="fa fa-sign-out" aria-hidden="true"></i> Logout
+                        </button>
                     </form>
                     <a href="{{ route('user.mycart') }}">
                         <i class="fas fa-shopping-cart"></i> [ {{ $itemsincart }} ]</a>
                     <a href="{{ route('user.wishlist') }}">
-                        <i class="fa fa-heart" aria-hidden="true"></i> []</a>
+                        <i class="fa fa-heart" aria-hidden="true"></i> [{{$wishcounts}}]</a>
 
 
                 </div>

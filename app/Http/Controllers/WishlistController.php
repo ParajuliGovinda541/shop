@@ -15,6 +15,15 @@ class WishlistController extends Controller
 {
 
 
+    public function wishcount()
+    {
+        if (!auth()->user()) {
+            return 0;
+        } else {
+            return wishlist::where('user_id', auth()->user()->id)->count();
+        }
+    }
+
     public function include()
     {
         if (!auth()->user()) {
@@ -26,21 +35,18 @@ class WishlistController extends Controller
 
 
     public function index()
-
     {
+       $wishcounts=$this->wishcount();
+        dd($wishcounts);
         $itemsincart = $this->include();
         $categories = Category::all();
         $products = Product::all();
-        return view('user.wishlist',compact('itemsincart', 'categories'));
+        return view('user.wishlist',compact('itemsincart', 'categories','wishcounts'));
     }
 
     public function store($product_id)
-
     {
-        $itemsincart = $this->include();
-        $categories = Category::all();
-        $products = Product::all();
-
+     
 
 
         $wish = wishlist::where('product_id', $product_id)->where('user_id', Auth::id())->first();
@@ -52,20 +58,18 @@ class WishlistController extends Controller
                 'product_id' => $product_id
             ]);
         }
-        // dd($product_id);
+        // dd($product_id)
 
-
-
-        return view('user.index', compact('itemsincart','products','categories'))->with('success', 'Product added  in Wishlist');
+        return redirect('/')    ->with('success', 'Product added  in Wishlist');
     }
 
 
     public function show()
     {
-        $products= Wishlist::where('user_id', auth()->user()->id)->get();
-        // $products = Product::all();
+        $products= Wishlist::all();
+        //  $products = Product::all();
 
-        // dd($wishlist);
+        // dd($products);
         return view('user.wishlist', compact('products'))    ;
     }
 
@@ -74,9 +78,9 @@ class WishlistController extends Controller
         $itemsincart = $this->include();
         $categories = Category::all();
         $products = Product::all();
-        $wishcount = Wishlist::where('user_id', auth()->user()->id)->count();
+        $wishcounts = Wishlist::where('user_id', auth()->user()->id)->count();
         // dd($wishcount);
 
-        return redirect(route('user.index', compact('itemsincart', 'categories', 'wishcount')));
+        return redirect(route('user.index', compact('itemsincart', 'categories', 'wishcounts')));
     }
 }

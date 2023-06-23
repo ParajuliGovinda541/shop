@@ -7,7 +7,7 @@
     <form action="" method="POST">
         @csrf
 
-        @forelse ($carts as $cart)
+        @forelse($carts as $cart)
             <div class="flex justify-between items-center mt-2 pt-6">
 
                 <div class="flex  items-center">

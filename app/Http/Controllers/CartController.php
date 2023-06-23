@@ -7,6 +7,8 @@ use App\Models\User;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\wishlist;
+
 use Illuminate\Http\Request;
 use Illuminate\support\Facades\Auth ;
 
@@ -15,6 +17,15 @@ class CartController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+     public function wishcount()
+     {
+         if (!auth()->user()) {
+             return 0;
+         } else {
+             return wishlist::where('user_id', auth()->user()->id)->count();
+         }
+     }
     public function index()
     {
         if(!auth()->user())
@@ -28,12 +39,14 @@ class CartController extends Controller
 
         $categories = Category::all();
        $products=Product::all();
+       $wishcounts=$this->wishcount();
+
 
 
         $carts = Cart::where('user_id',auth()->user()->id)->where('is_ordered',false)->get();
 
-        return view('user.viewcart',compact('carts','categories','products'));
-        return view('viewcart',compact('carts','categories','itemsincart'));
+        return view('user.viewcart',compact('carts','categories','products','wishcounts'));
+        return view('viewcart',compact('carts','categories','itemsincart','wishcounts'));
 
     }
  
@@ -52,8 +65,10 @@ class CartController extends Controller
 
         $carts = Cart::where('user_id', auth()->user()->id)->where('is_ordered',false)->get();
         $categories = Category::all();
+        
+        $wishcounts=$this->wishcount();
     
-        return view('user.mycart', compact('carts', 'categories','itemsincart'));
+        return view('user.mycart', compact('carts', 'categories','itemsincart','wishcounts'));
     }
     
 

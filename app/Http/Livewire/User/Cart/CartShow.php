@@ -12,7 +12,7 @@ class CartShow extends Component
 
     public function mount()
     {
-        $this->carts=Cart::where('user_id', auth()->user()->id)->get();
+        $this->carts=Cart::where('user_id', auth()->user()->id)->where('is_ordered',false)->get();
     }
 
 
@@ -26,7 +26,7 @@ class CartShow extends Component
     public function decrementQuantity(int $cardId)
    
         {
-            $cardData= Cart::where('id',$cardId)->where('user_id',auth()->user()->id)->first();
+            $cardData= Cart::where('id',$cardId)->where('user_id',auth()->user()->id)->where('is_ordered',false)->first();
         
             
                 
@@ -37,7 +37,7 @@ class CartShow extends Component
         }
         public function incrementQuantity(int $cardId)
         {
- $cardData= Cart::where('id',$cardId)->where('user_id',auth()->user()->id)->first();
+ $cardData= Cart::where('id',$cardId)->where('user_id',auth()->user()->id)->where('is_ordered',false)->first();
             if($cardData)
             {
                 $cardData->increment('qty');
