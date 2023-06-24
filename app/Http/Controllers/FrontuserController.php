@@ -167,11 +167,11 @@ class FrontuserController extends Controller
         Cart::whereIn('id', $ids)->update(['is_ordered' => true]);
 
         $data=[
-            'mailmessage'=> 'New Order has Been Placed'
+            'mailmessage'=> 'Your Order has Been Submitted'
         ];
         Mail::send('email.email',$data, function($message){
             $message->to(auth()->user()->email)
-            ->subject('Order Placed');
+            ->subject(' Order Requested');
         });
 
         return redirect(route('user.orderedproduct'))->with('success', 'item orderd sucessfully!');

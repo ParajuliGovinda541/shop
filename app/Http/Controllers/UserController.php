@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\cart;
 use App\Models\User;
+use App\Models\wishlist;
 use Illuminate\Validation\Rules;
 
 use Illuminate\Http\Request;
@@ -11,6 +12,15 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+    public function wishcount()
+    {
+        if (!auth()->user()) {
+            return 0;
+        } else {
+            return wishlist::where('user_id', auth()->user()->id)->count();
+        }
+    }
+
     public function include()
     {
         if(!auth()->user())
@@ -27,17 +37,21 @@ class UserController extends Controller
     public function index()
     {
         $itemsincart = $this->include();
+       $wishcounts=$this->wishcount();
+
 
         $user=User::all();
         // dd($categories);
 
-        return view('user.myprofile',compact('user','itemsincart'));
+        return view('user.myprofile',compact('user','itemsincart','wishcounts'));
     }
 
     public function edit($id)
 {
+    $wishcounts=$this->wishcount();
+
     $user = User::find($id);
-    return view('user.profileedit', compact('user'));
+    return view('user.profileedit', compact('user','wishcounts'));
 }
 
     public function update(Request $request, $id)

@@ -37,7 +37,7 @@ class WishlistController extends Controller
     public function index()
     {
        $wishcounts=$this->wishcount();
-        dd($wishcounts);
+        // dd($wishcounts);
         $itemsincart = $this->include();
         $categories = Category::all();
         $products = Product::all();
@@ -47,8 +47,6 @@ class WishlistController extends Controller
     public function store($product_id)
     {
      
-
-
         $wish = wishlist::where('product_id', $product_id)->where('user_id', Auth::id())->first();
         if (isset($wish)) {
             return back()->with('success', 'Product already in in Wishlist');
@@ -66,8 +64,8 @@ class WishlistController extends Controller
 
     public function show()
     {
-        $products= Wishlist::all();
-        //  $products = Product::all();
+        $wishlistproducts= Wishlist::where('user_id',auth()->user()->id)->pluck('product_id');
+         $products = Product::whereIn('id',$wishlistproducts->toArray())->get();
 
         // dd($products);
         return view('user.wishlist', compact('products'))    ;
