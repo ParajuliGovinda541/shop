@@ -38,6 +38,8 @@ class OrderController extends Controller
 
             'ordermessage' => 'Your Order Is being'. $status,
         ];
+
+        
         $this->status=$status;
         $this->email=$order->user->email;
         

@@ -81,4 +81,14 @@ class UserController extends Controller
 
         return redirect(route('user.myprofile'))->with('success', 'Profile updated successfully!');
     }
+
+    
+
+    public function destroy($id)
+    {
+        $user = User::find($id);
+        $user->delete();
+        return redirect(route('admin.registeruser.index'))->with('success','Deleted sucessfully!');
+
+    }
 }

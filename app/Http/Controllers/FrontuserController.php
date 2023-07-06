@@ -37,6 +37,10 @@ class FrontuserController extends Controller
     }
 
 
+    public function khalti()
+    {
+        return view('user.khalti')
+    ;}
 
     public function index()
     {

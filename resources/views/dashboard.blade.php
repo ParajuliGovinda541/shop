@@ -36,7 +36,7 @@
 
         <div class="px-4 py-8 rounded-lg bg-blue-600 text-white flex-justify-between">
             <p class="font-bold text-lg">Total Users</p>
-            <a class=" px-4 py-2 mx-2 rounded-lg hover:shadow-amber-300"href="{{ route('user.index') }}"></a>
+            <a class=" px-4 py-2 mx-2 rounded-lg hover:shadow-amber-300"href="{{ route('registeruser.index') }}"></a>
             <h3>{{$users}}</h3>
 
         </div>

@@ -18,7 +18,7 @@
                 <div class="absolute top-0 left-0 right-0 bottom-0 flex flex-col justify-center items-center text-white bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity">
                     <div class="px-5 py-3">
                         <div class="font-bold text-xl mb-2">{{ $product->product_name }}</div>
-                        <p class="text-gray-700 text-base">Price: Rs {{ $product->price }}</p>
+                        <p class="text-red-700 font-semibold">Price: Rs {{ $product->price }}</p>
                     </div>  
                     <div class="px-6 py-4">
                         <!-- Product details content -->

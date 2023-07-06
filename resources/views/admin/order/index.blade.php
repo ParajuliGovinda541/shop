@@ -8,7 +8,11 @@
     <hr class="h-1 bg-blue-200">
 
 <br>
-
+<div class="px-2 ml-96">
+<button class="bg-green-600 px-2 py-1 rounded text-white hover:shadow-blue-400">Pending</button>
+<button class="bg-yellow-600 px-2 py-1 rounded text-white hover:shadow-blue-400">Processing</button>
+<button class="bg-red-600 px-2 py-1 rounded text-white hover:shadow-blue-400">Verified</button>
+</div>
     <table id="mytable">
         <thead>
             <th>S.N</th>
@@ -42,7 +46,7 @@
 
                 <td>
                     <a href="{{route('admin.order.details',$order->id)}}"class="bg-blue-600 px-2 py-1 rounded text-white hover:shadow-blue-600">View Details</a>
-                    <a onclick="return confirm('Are you sure want to change status?')" href="{{route('admin.order.status',[$order->id,'Processing'])}}"class="bg-red-600 px-2 py-1 rounded text-white hover:shadow-blue-400">Processing</a>
+                    <a onclick="return confirm('Are you sure want to change status?')" href="{{route('admin.order.status',[$order->id,'Processing'])}}"class="bg-green-600 px-2 py-1 rounded text-white hover:shadow-blue-400">Processing</a>
                     <a onclick="return confirm('Confirm Order?')" href="{{route('admin.order.status',[$order->id,'Verified'])}}"class="bg-red-600 px-2 py-1 rounded text-white hover:shadow-blue-400">Ordered</a>
                 </td>
             </tr>
@@ -52,6 +56,10 @@
 
     <script>
         let table = new DataTable('#mytable');
+
+
+
     </script>
+    
 
 @endsection
