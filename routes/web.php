@@ -9,9 +9,13 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FrontuserController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PayementController;
 use App\Http\Controllers\RegisterUserController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WishlistController;
+use Illuminate\Http\Request;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -59,6 +63,14 @@ Route::get('/user/about', [FrontuserController::class, 'about'])->name('user.abo
 Route::get('/user/viewproduct/{product}', [FrontuserController::class, 'viewproduct'])->name('user.viewproduct');
 
 Route::get('/user/khalti', [FrontuserController::class, 'khalti'])->name('user.khalti');
+
+Route::post('/user/khalti',function (Request $request){
+
+
+return response()->json($request);
+
+
+})->name('khalti.verify');
 
 
 
