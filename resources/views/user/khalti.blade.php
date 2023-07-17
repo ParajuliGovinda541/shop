@@ -19,14 +19,15 @@
     <title>Document</title>
 </head>
 <body>
+    
     <button id="payment-button">Pay with Khalti</button>
 
     <script>
         var config = {
             // replace the publicKey with yours
-            "publicKey": "test_public_key_018852f60fab4f69a4c7e0ee6351c724",
-            "productIdentity": "1234567890",
-            "productName": "Dragon",
+            "publicKey": "test_public_key_1ce4119b85e24790bdd97f9e236067ff",
+            "productIdentity": "{{auth()->user()->id}}",
+            "productName": "{{auth()->user()->name}}",
             "productUrl": "http://127.0.0.1:8000/user/viewproduct/11",
             "paymentPreference": [
                 "KHALTI",
@@ -44,7 +45,7 @@
 
           $.ajax({
             type: 'POST',
-          url: "{{route('khalti.verify')}}",
+          url: "{{route('user.khalti.verify')}}",
           data:{
             _token:"{{ csrf_token() }}",
             data:payload,

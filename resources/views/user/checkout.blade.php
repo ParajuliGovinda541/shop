@@ -1,3 +1,5 @@
+@include('layouts.message')
+@include('links.links')
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,8 +9,7 @@
     <title>Document</title>
 </head>
 <body>
-    @include('layouts.message')
-    @include('links.links')
+  
 
     <!-- component -->
     <div class="grid grid-cols-2 gap-4">
@@ -47,17 +48,15 @@
                 <p class="mt-4 text-gray-800 font-medium">Payment information</p>
                 <div class="">
                     <label class="block text-sm text-gray-600" for="cus_name">Card</label>
-                    <select class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="cus_name" name="payement_method" required="" aria-label="Name">
-                        <option value="" disabled selected>Select Payment Method</option>
-                        <option value="COD">Cash On Delivery</option>
-                        <option value="ESEWA">Esewa</option>
-                        <option value="KHALTI">Khalti</option>
-                        <option value="IME  ">IME Pay</option>
+                    <select class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="paymentMethodSelect" name="payment_method" required="" aria-label="Name" onchange="handlePaymentMethod(this)">
+                      <option value="" disabled selected>Select Payment Method</option>
+                      <option value="">Cash On Delivery</option>
+                      <option value="khalti">Khalti</option>
                     </select>
                 </div>
                 <div class="mt-4">
-                    <input type="submit" class="px-4 py-1 text-white font-light tracking-wider bg-gray-900 rounded" value="Confirm">
-                    <a  href="{{route('user.mycart')}}" class="px-4 ml-72 py-1 text-white font-light tracking-wider bg-red-500 rounded" type="submit">Cancel</a>
+                    <input type="submit" id="confirmButton" class="px-4 py-1 text-white font-light tracking-wider bg-gray-900 rounded" value="Confirm" >
+                    <a href="{{route('user.mycart')}}" class="px-4 ml-72 py-1 text-white font-light tracking-wider bg-red-500 rounded" type="submit">Cancel</a>
                 </div>
         </div>
         <div class="leading-loose j">
@@ -65,7 +64,6 @@
               <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
-                       
                         <th scope="col" class="px-2 py-3">
                             S.N
                         </th>
@@ -83,46 +81,49 @@
                     </th>
                     </tr>
                 </thead>
-              
-              <tbody>
-                @php
-                $sn=1
-            @endphp
-@foreach ($carts as $cart)
-    
-    <input type="hidden" name="cart_id" value="{{$cart->id}} " id=""> 
-    <input type="hidden" name="user_id" value="{{$cart->user_id}} " id="">
-    <input type="hidden" name="amount" value="{{$cart->amount}} " id="">
-    <input type="hidden" name="status" value="{{$cart->status}} " id="">
-    <input type="hidden" name="date" value="{{$cart->date}} " id="">
-<tr >
-            
-
-  <td class="px-6 py-4" >
-    {{$sn++}}
-  </td>
-  <td class="px-6 py-4">
-    <img src="{{ asset('images/product/' . $cart->image_url) }}"
-    alt="{{ asset('images/cart/' . $cart->image_url) }}" width="60" class="rounded-full ">
-      {{-- {{$cart->product->image_url}} --}}
-    </td>
-    <td class="px-6 py-4" >
-      {{$cart->product->product_name}}
-  </td>
-  <td class="px-6 py-4" >
-    {{$cart->qty}}
-</td>
-<td class="px-6 py-4" >
-    {{ $cart->product->price * $cart->qty }}
-</td>
-</tr>
-@endforeach
- </tbody>
-    </table>
-            </div>
+                <tbody>
+                    @php
+                    $sn=1
+                @endphp
+                @foreach ($carts as $cart)
+                    <input type="hidden" name="cart_id" value="{{$cart->id}} " id="">
+                    <input type="hidden" name="user_id" value="{{$cart->user_id}} " id="">
+                    <input type="hidden" name="amount" value="{{$cart->amount}} " id="">
+                    <input type="hidden" name="status" value="{{$cart->status}} " id="">
+                    <input type="hidden" name="date" value="{{$cart->date}} " id="">
+                    <tr>
+                        <td class="px-6 py-4">{{$sn++}}</td>
+                        <td class="px-6 py-4">
+                            <img src="{{ asset('images/product/' . $cart->image_url) }}"
+                                 alt="{{ asset('images/cart/' . $cart->image_url) }}" width="60" class="rounded-full">
+                        </td>
+                        <td class="px-6 py-4">{{$cart->product->product_name}}</td>
+                        <td class="px-6 py-4">{{$cart->qty}}</td>
+                        <td class="px-6 py-4">{{$cart->product->price * $cart->qty}}</td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
-  </form>
-
+</div>
+</form>
+<script>
+    function handlePaymentMethod(selectElement) {
+      var selectedValue = selectElement.value;
+  
+      if (selectedValue !== "") {
+        document.getElementById("confirmButton").disabled = false;
+      } else {
+        document.getElementById("confirmButton").disabled = true;
+      }
+    }
+  
+    function redirectToPayment() {
+      window.location.href = "{{ route('user.khalti') }}";
+    }
+  
+    document.getElementById("confirmButton").addEventListener("click", redirectToPayment);
+</script>
 </body>
 </html>

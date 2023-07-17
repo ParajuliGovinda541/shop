@@ -1,5 +1,6 @@
 @extends('links.links')
 @section('title', 'Emporium')
+@include('user.navbar')
 <br>
 
 <div>

@@ -50,4 +50,28 @@ class OrderController extends Controller
         
         return redirect(route('admin.order.index'))->with('success', 'Status changed to ' . $status);
     }
+
+
+    public function ordersearch(Request $request)
+    {
+        if ($request->search) {
+            $searchTerm = $request->search;
+            
+            $searchproducts = order::where(function ($query) use ($searchTerm) {
+                $query->where('status', 'LIKE', '%' . $searchTerm . '%')
+                      ->orWhere('date', 'LIKE', '%' . $searchTerm . '%')
+                      ->orWhere('payement_method', 'LIKE', '%' . $searchTerm . '%')
+                      ->orWhere('phone', 'LIKE', '%' . $searchTerm . '%')
+
+
+                      ->orWhere('amount', 'LIKE', '%' . $searchTerm . '%');
+            })
+            ->latest()
+            ->paginate(5);
+    dd($searchproducts);
+            return view('user.orderedproduct', compact('searchproducts'));
+        } else {
+            return redirect()->back()->with('message', 'Empty Search');
+        }
+    }
 }

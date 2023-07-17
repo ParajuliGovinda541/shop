@@ -211,7 +211,29 @@ class FrontuserController extends Controller
         $wishcounts=$this->wishcount();
         $itemsincart = $this->include();
         $carts = Cart::where('user_id', auth()->user()->id)->where('is_ordered', false)->get();
-
         return view('user.checkout', compact('itemsincart', 'carts','wishcounts'));
     }
+
+    public function search(Request $request)
+    {
+        if ($request->search) {
+            $searchTerm = $request->search;
+            
+            $searchproducts = Product::where(function ($query) use ($searchTerm) {
+                $query->where('product_name', 'LIKE', '%' . $searchTerm . '%')
+                      ->orWhere('description', 'LIKE', '%' . $searchTerm . '%')
+                      ->orWhere('price', 'LIKE', '%' . $searchTerm . '%')
+                      ->orWhereHas('categories', function ($query) use ($searchTerm) {
+                          $query->where('categories_name', 'LIKE', '%' . $searchTerm . '%');
+                      });
+            })
+            ->latest()
+            ->paginate(5);
+    
+            return view('user.search', compact('searchproducts'));
+        } else {
+            return redirect()->back()->with('message', 'Empty Search');
+        }
+    }
+    
 }

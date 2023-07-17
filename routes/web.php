@@ -14,6 +14,8 @@ use App\Http\Controllers\RegisterUserController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WishlistController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+
 
 
 
@@ -35,6 +37,11 @@ use Illuminate\Http\Request;
 // Route::get('payement', function () {
 //     return view('khalti');
 // });
+
+
+Route::get('/user/searchs', [FrontuserController::class, 'search'])->name('user.searchs');
+Route::get('/user/orderedproduct', [OrderController::class, 'ordersearch'])->name('user.orderedproduct');
+
 
 
 Route::get('/', [FrontuserController::class, 'home'])->name('home');
@@ -62,15 +69,33 @@ Route::get('/', [FrontuserController::class, 'index'])->name('user.index');
 Route::get('/user/about', [FrontuserController::class, 'about'])->name('user.about');
 Route::get('/user/viewproduct/{product}', [FrontuserController::class, 'viewproduct'])->name('user.viewproduct');
 
+Route::get('/user/search', [FrontuserController::class, 'search'])->name('user.search');
+
+
+
 Route::get('/user/khalti', [FrontuserController::class, 'khalti'])->name('user.khalti');
 
-Route::post('/user/khalti',function (Request $request){
+// Route::post('/user/khalti',function (Request $request){
 
 
-return response()->json($request);
+// return response()->json($request);
 
 
-})->name('khalti.verify');
+// })->name('user.khalti.verify');
+
+Route::post('/khalti', function (Request $request) {
+    // Process the request
+
+    // Define the response data
+    $responseData = [
+        'message' => 'Payment verification successful',
+        'data' => $request->all()
+    ];
+
+    // Return the response
+    return response()->json($responseData);
+})->name('user.khalti.verify');
+
 
 
 
@@ -101,7 +126,14 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/checkout', [FrontuserController::class, 'checkout'])->name('user.checkout');
 });
 
-// route foor viewing category
+
+
+// route for new arrivals
+
+
+// Route:: get('/newarrivals',[])
+// // route foor viewing category
+
 Route::get('/user/viewcategory/{id}', [FrontuserController::class, 'viewcategory'])->name('user.viewcategory');
 
 
