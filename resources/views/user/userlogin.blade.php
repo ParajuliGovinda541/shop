@@ -1,15 +1,4 @@
 @vite(['resources/css/app.css', 'resources/js/app.js'])
-{{-- <div class="w-1/2 mx-auto p-6 rounded-lg bg-gray-200 shadow-lg my-5">
-        <h2 class="font-bold text-4xl text-center my-4">Login</h2>
-        <form action="{{route('login')}}" method="POST">
-            @csrf
-            <input type="text" name="email" id="email" placeholder="Email" class="w-full px-2 rounded-lg  my-4">
-            <input type="password" name="password" id="password" placeholder="Password" class="w-full px-2 rounded-lg  my-4">
-            <input type="submit" value="Login" class="w-1/2 block p-2 rounded-lg mx-auto my-4 bg-indigo-600 text-white">
-            <a href="{{route('user.register')}}">Register Here</a>
-        </form>
-    </div> --}}
-
 
 <section class="h-screen">
     <div class="container h-full px-6 py-24">
@@ -112,6 +101,8 @@
         </div>
     </div>
 </section>
+<!-- ... (Existing HTML code) ... -->
+
 <script>
     // Initialization for ES Users
     import {
@@ -124,4 +115,51 @@
         Input,
         Ripple
     });
+
+    function validateForm() {
+        const email = document.getElementById('exampleFormControlInput3').value;
+        const password = document.getElementById('exampleFormControlInput33').value;
+
+        // Check if email and password are empty
+        if (email.trim() === '' || password.trim() === '') {
+            showAlert('Please enter both email and password.');
+            return false;
+        }
+
+        // Check if email is valid
+        if (!isValidEmail(email)) {
+            showAlert('Please enter a valid email address.');
+            return false;
+        }
+
+        // Check other conditions for password validity (if required)
+
+        // If the form passes validation, you can allow the form submission
+        return true;
+    }
+
+    function isValidEmail(email) {
+        // Basic email validation using a regular expression
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+
+    function showAlert(message) {
+        // Create an alert element
+        const alertElement = document.createElement('div');
+        alertElement.className = 'absolute top-0 left-0 right-0 px-4 py-3 bg-red-500 text-white text-center';
+
+        // Set the alert message
+        alertElement.textContent = message;
+
+        // Append the alert to the form container
+        const formContainer = document.querySelector('.container');
+        formContainer.appendChild(alertElement);
+
+        // Remove the alert after a few seconds
+        setTimeout(() => {
+            formContainer.removeChild(alertElement);
+        }, 3000);
+    }
 </script>
+

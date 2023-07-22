@@ -6,6 +6,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://khalti.s3.ap-south-1.amazonaws.com/KPG/dist/2020.12.17.0.0.0/khalti-checkout.iffe.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <title>Document</title>
 </head>
 <body>
@@ -14,8 +17,8 @@
     <!-- component -->
     <div class="grid grid-cols-2 gap-4">
         <div class="leading-loose j">
-            <form  action="{{route('order.orderedproduct')}}" method="POST" class="max-w-xl m-4 p-10 bg-white rounded shadow-xl">
-                @csrf
+            {{-- <form   id="orderForm"  action="{{route('order.orderedproduct')}}" method="POST" class="max-w-xl m-4 p-10 bg-white rounded shadow-xl"> --}}
+                {{-- @csrf --}}
                 <p class="text-gray-800 font-medium">Customer information</p>
                 <div class="">
                     <label class="block text-sm text-gray-00" for="cus_name">Name</label>
@@ -31,31 +34,32 @@
                 </div>
                 <div class="mt-2">
                     <label class=" block text-sm text-gray-600" for="cus_email">Shipping Address</label>
-                    <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="cus_email" name="street" type="text" required="" placeholder="Street" aria-label="Email" value="{{auth()->user()->street}}">
+                    <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="street" name="street" type="text" required="" placeholder="Street" aria-label="Email" value="{{auth()->user()->street}}">
                 </div>
                 <div class="mt-2">
                     <label class="hidden text-sm block text-gray-600" for="cus_email">City</label>
-                    <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="cus_email" name="city" type="text" required="" placeholder="City" aria-label="Email"value="{{auth()->user()->city}}">
+                    <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="city" name="city" type="text" required="" placeholder="City" aria-label="Email"value="{{auth()->user()->city}}">
                 </div>
                 <div class="inline-block mt-2 w-1/2 pr-1">
                     <label class="hidden block text-sm text-gray-600" for="cus_email">Country</label>
-                    <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="cus_email" name="country" type="text" required="" placeholder="Country" aria-label="Email"value="{{auth()->user()->country}}">
+                    <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="country" name="country" type="text" required="" placeholder="Country" aria-label="Email"value="{{auth()->user()->country}}">
                 </div>
                 <div class="inline-block mt-2 -mx-1 pl-1 w-1/2">
                     <label class="hidden block text-sm text-gray-600" for="cus_email">Zip</label>
-                    <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="cus_email"  name="zipcode" type="text" required="" placeholder="Zip" aria-label="Email"value="{{auth()->user()->zip}}">
+                    <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="zip"  name="zipcode" type="text" required="" placeholder="Zip" aria-label="Email"value="{{auth()->user()->zip}}">
                 </div>
                 <p class="mt-4 text-gray-800 font-medium">Payment information</p>
                 <div class="">
                     <label class="block text-sm text-gray-600" for="cus_name">Card</label>
-                    <select class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="paymentMethodSelect" name="payment_method" required="" aria-label="Name" onchange="handlePaymentMethod(this)">
-                      <option value="" disabled selected>Select Payment Method</option>
-                      <option value="">Cash On Delivery</option>
-                      <option value="khalti">Khalti</option>
+                    <select class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" onchange="paymentMethod(this.value)" id="paymentMethodSelect" name="payment_method" required="" aria-label="Name">
+                      <option   >Select Payment Method</option>
+                      <option  value="COD">Cash On Delivery</option>
+                      <option  value="KHALTI">Khalti</option>
                     </select>
                 </div>
                 <div class="mt-4">
-                    <input type="submit" id="confirmButton" class="px-4 py-1 text-white font-light tracking-wider bg-gray-900 rounded" value="Confirm" >
+                 
+                    <button onclick="submitdata()" class="px-4 py-1 text-white font-light tracking-wider bg-gray-900 rounded">GO</button>
                     <a href="{{route('user.mycart')}}" class="px-4 ml-72 py-1 text-white font-light tracking-wider bg-red-500 rounded" type="submit">Cancel</a>
                 </div>
         </div>
@@ -107,23 +111,166 @@
         </div>
     </div>
 </div>
-</form>
+{{-- </form> --}}
+
 <script>
-    function handlePaymentMethod(selectElement) {
-      var selectedValue = selectElement.value;
+
+  var cus_name  ;
+  var cus_email  ;
+  var phone  ;
+  var street ;
+  var city ;
+  var zip  ;
+  var country ;
+  var paymentMethodSelect ;
+  var checkout;
   
-      if (selectedValue !== "") {
-        document.getElementById("confirmButton").disabled = false;
-      } else {
-        document.getElementById("confirmButton").disabled = true;
-      }
+
+
+function paymentMethod(method)
+{
+
+    paymentMethodSelect=method;
+    
+    //  console.log(data);
+}
+
+  function submitdata()
+  {
+
+   cus_name = document.getElementById('cus_name').value;
+   cus_email = document.getElementById('cus_email').value;
+   phone = document.getElementById('phone').value;
+   street = document.getElementById('street').value;
+   city = document.getElementById('city').value;
+   zip = document.getElementById('zip').value;
+   country = document.getElementById('country').value;
+
+
+   var data={
+    data:{
+    
+        person_name:cus_name,
+        // cus_email:cus_email,
+        phone:phone,
+        street:street,
+        city:city,
+        zipcode:zip,
+        country:country,    
+        
+
+
+    },
+    _token:"{{csrf_token()}}"
+  };
+
+
+    if(paymentMethodSelect=='KHALTI')
+    {
+
+        khalti(data);
+        checkout.show({amount: 1000});
+      
+        // console.log(paymentMethodSelect);
+    } 
+    if(paymentMethodSelect=='COD')
+    {
+
+    //   data->data->paymentMethod='COD';
+            data['data']['payement_method']='COD';
+
+        loadAjaxContent(data);
     }
-  
-    function redirectToPayment() {
-      window.location.href = "{{ route('user.khalti') }}";
+
+  }
+
+// Ajax
+function loadAjaxContent(data) {
+        $.ajax({
+            url: "{{route('order.orderedproduct')}}", // Replace with your AJAX endpoint URL
+            type: 'post', // Change to 'POST' if needed
+            data:data,
+            success: function (response) {
+                // The AJAX request was successful.
+                // 'data' contains the response from the server.
+                window.location.href="{{route('user.orderedproduct')}}";
+                
+                console.log(response);
+            },
+            error: function (xhr, status, error) {
+                // An error occurred during the AJAX request.
+                console.error(error);
+            }
+        });
     }
-  
-    document.getElementById("confirmButton").addEventListener("click", redirectToPayment);
+
+
+   function khalti(data)
+   {
+    var config = {
+            // replace the publicKey with yours
+            "publicKey": "test_public_key_1ce4119b85e24790bdd97f9e236067ff",
+            "productIdentity": "{{auth()->user()->id}}",
+            "productName": "{{auth()->user()->name}}",
+            "productUrl": "http://127.0.0.1:8000/user/viewproduct/11",
+            "paymentPreference": [
+                "KHALTI",
+                "EBANKING",
+                "MOBILE_BANKING",
+                "CONNECT_IPS",
+                "SCT",
+                ],
+            "eventHandler": {
+                onSuccess (payload) {
+                    // hit merchant api for initiating verfication
+                    console.log(payload);
+                    
+
+
+          $.ajax({
+            type: 'POST',
+          url: "{{route('user.khalti.verify')}}",
+          data:{
+            _token:"{{ csrf_token() }}",
+            data:payload,
+          },
+            
+          datatype:'json',
+         
+          success: function(response) {
+            console.log(response);
+
+               data['data']['payement_method']='KHALTI';
+
+               loadAjaxContent(data);
+
+          },
+          error: function(xhr, status, error) {
+            console.log("Error: " + error);
+          }
+        });
+
+
+
+
+
+                },
+                onError (error) {
+                    console.log(error);
+                },
+                onClose () {
+                    console.log('widget is closing');
+                }
+            }
+        };
+
+         checkout = new KhaltiCheckout(config);
+        var btn = document.getElementById("payment-button");
+      
+        
+   }
+
 </script>
+
 </body>
 </html>

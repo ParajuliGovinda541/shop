@@ -48,7 +48,7 @@
 
 
     <div>
-        <h1 class="text-center text-4xl">Featured Products</h1>
+        <h1 class="text-center text-4xl">Related Products</h1>
     </div>
     <br>
     <div class="grid grid-cols-4">
@@ -77,11 +77,9 @@
     <div class=" flex items-center justify-between p-4">
     
       
-        {{-- <div class="text-end py-5">
-      <button class="rounded-full">
-        <a href="{{ route('user.product') }}" class="option 1">View  Products</a>
-        </button>
-    </div> --}}
+        {{-- <div class="mx-24 my-10 ">
+            {{ $relatedproducts->links() }}
+        </div> --}}
     
     </div>
 

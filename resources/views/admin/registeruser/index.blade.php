@@ -18,7 +18,10 @@
             <th>Email</th>
             <th>Address</th>
             <th>Phone</th>
+            <th>Role</th>
+
             <th>Image</th>
+
             <th>View Details</th>
 
         </thead>
@@ -33,6 +36,8 @@
                 <td>{{$user->email}}</td>
                 <td>{{$user->address}}</td>
                 <td>{{$user->phone}}</td>
+                <td>{{$user->role}}</td>
+
             <td><img  class= "w-20" src="{{asset('images/user/'.$user->image_url)}}" alt ="{{auth()->user()->name}}"></td>
                 <td>
                     {{-- <a href="{{route('admin.product.edit',$user->id)}}"class="bg-blue-600 px-2 py-1 rounded text-white hover:shadow-blue-600">Edit</a> --}}

@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\wishlist;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Validation\Rules;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -138,16 +139,16 @@ class FrontuserController extends Controller
     public function orderedproduct(Request $request)
     {
         //  dd($request->all());
-        $data
-            = $request->validate([
-                'street' => 'required',
-                'city' => 'required',
-                'country' => 'required',
-                'zipcode' => 'required|numeric',
-                'phone' => 'required|numeric',
-                'person_name' => 'required',
-                'payement_method' => 'required',
-            ]);
+        $data=$request->toArray();
+            // = $request->validate([
+            //     'street' => 'required',
+            //     'city' => 'required',
+            //     'country' => 'required',
+            //     'zipcode' => 'required|numeric',
+            //     'phone' => 'required|numeric',
+            //     'person_name' => 'required',
+            //     'payement_method' => 'required',
+            // ]);
 
         $currentDate = Carbon::now()->toDateString();
         $data['status'] = 'Pending';
@@ -166,19 +167,39 @@ class FrontuserController extends Controller
         $data['user_id'] = auth()->user()->id;
         //    dd($data);
 
+        // print_r($data);  
+        $order=$data['data'];
+        $order['amount']=$totalprice;
+        $order['status']='Pending';
+        $order['cart_id']=implode(',', $ids);
+        $order['user_id'] = auth()->user()->id;
+        $currentDate = Carbon::now()->toDateString();
+        $order['date'] = $currentDate;
 
-        Order::create($data);
+
+
+        
+        Order::create($order);
         Cart::whereIn('id', $ids)->update(['is_ordered' => true]);
 
-        $data=[
+        $msg=[
             'mailmessage'=> 'Your Order has Been Submitted'
         ];
-        Mail::send('email.email',$data, function($message){
+        Mail::send('email.email',$msg, function($message){
             $message->to(auth()->user()->email)
             ->subject(' Order Requested');
         });
 
-        return redirect(route('user.orderedproduct'))->with('success', 'item orderd sucessfully!');
+
+        // return redirect(route('user.orderedproduct'))->with('success', 'item orderd sucessfully!');
+
+
+        
+        session()->flash('success','Product Order SucessFully');
+
+        return response()->json($data);
+
+
     }
 
     public function ordertable()
@@ -196,6 +217,7 @@ class FrontuserController extends Controller
             }
             $order->carts = $carts;
         }
+        
         return view('user.orderedproduct', compact('itemsincart', 'orders', 'products','wishcounts'));
     }
 
