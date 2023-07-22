@@ -75,32 +75,39 @@
         <tbody>
 
 
-          @foreach($orders as $order)
-          @foreach($order->carts as $cart)
-          <tr >
-                    <td class="px-6 py-4" >
-                        {{$order->id}}
-                    </td>
-              <td><img class="w-16" src="{{asset('images/product/'.$cart->product->image_url)}}" alt=""></td>
+            @php
+                // dd($orders[0]->carts[0]->product);
+            @endphp
+@for($i = 0; $i < count($orders); $i++)
+@php
+    $order = $orders[$i];
+    $cart = $order->carts[0] ?? null; // Use null if $order->carts is empty
+@endphp
+@if($cart)
+    <tr>
+        <td class="px-6 py-4">
+            {{$order->id}}
+        </td>
+        <td>
+            <img class="w-16" src="{{asset('images/product/'.$cart->product->image_url)}}" alt="">
+        </td>
+        <td class="px-6 py-4">
+            {{$cart->product->product_name}}
+        </td>
+        <td class="px-6 py-4">
+            {{$cart->product->price}}
+        </td>
+        <td class="px-6 py-4">
+            {{$order->status}}
+        </td>
+        <td class="px-6 py-4">
+            {{$order->date}}
+        </td>
+    </tr>
+@endif
+@endfor
 
-                    <td class="px-6 py-4">
-                        {{$cart->product->product_name}}
-                    
-                    </td>
-                    <td class="px-6 py-4">
-                        {{$cart->product->price}}
-
-                    </td>
-                    <td class="px-6 py-4">
-                        {{$order->status}}
-
-                    </td>
-                    <td class="px-6 py-4">
-                        {{$order->date}}
-
-                    </td>
-          @endforeach
-      @endforeach
+  
                 {{-- @forelse ($orders as $order)
 
                 <tr >

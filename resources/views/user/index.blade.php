@@ -28,7 +28,7 @@
     @include('user.showcategory')
 
 
-    @include('user.product')
+    {{-- @include('user.product') --}}
 
 
 

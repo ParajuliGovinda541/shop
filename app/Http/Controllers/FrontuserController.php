@@ -105,7 +105,7 @@ class FrontuserController extends Controller
     {
         $itemsincart = $this->include();
 
-        $products = Product::paginate(5);
+        $products = Product::paginate(8);
         $wishcounts=$this->wishcount();
 
         return view('user.product', compact('products', 'itemsincart','wishcounts'));
