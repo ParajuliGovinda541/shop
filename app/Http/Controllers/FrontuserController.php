@@ -52,6 +52,18 @@ class FrontuserController extends Controller
         return view('user.index', compact('products', 'categories', 'itemsincart','wishcounts'));
     }
 
+    public function recommendation()
+    {
+        return view('user.recommendation');
+    }
+
+    public function recentlyAdded()
+    {
+        $products = Product::orderBy('created_at', 'desc')->take(5)->get();
+
+        
+        return view('user.recommendation', compact('products'));
+    }
     public function about()
     {
         return view('user.about');

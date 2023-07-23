@@ -13,6 +13,8 @@ use App\Http\Controllers\PayementController;
 use App\Http\Controllers\RegisterUserController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WishlistController;
+use App\Http\Controllers\RecommendationController;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -61,12 +63,20 @@ Route::get('/user/profileedit/{id}', [UserController::class, 'edit'])->name('use
 Route::post('/user/profileedit/{id}/update', [UserController::class, 'update'])->name('user.profileedit.update');
 
 
+// routes/web.php or routes/api.php
+
+
+Route::get('/user/recommendation', [FrontuserController::class, 'recentlyAdded']);
+
+
 
 //Route for userside
 
 
 Route::get('/', [FrontuserController::class, 'index'])->name('user.index');
 Route::get('/user/about', [FrontuserController::class, 'about'])->name('user.about');
+Route::get('/user/recommendation', [FrontuserController::class, 'recommendation'])->name('user.recommendation');
+
 Route::get('/user/viewproduct/{product}', [FrontuserController::class, 'viewproduct'])->name('user.viewproduct');
 
 Route::get('/user/search', [FrontuserController::class, 'search'])->name('user.search');

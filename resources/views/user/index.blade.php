@@ -21,11 +21,16 @@
 
 <body>
     @include('user.navbar')
+    @include('user.recommendation')
 
-
-    @include('user.slider')
+    {{-- @include('user.slider') --}}
 
     @include('user.showcategory')
+
+
+
+
+    
 
 
     {{-- @include('user.product') --}}

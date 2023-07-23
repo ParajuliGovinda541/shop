@@ -14,3 +14,9 @@
 
 <script src="{{asset('datatable/datatables.js')}}"></script>
 <script src="{{asset('fontfolder/js/fontawesome.min.js')}}"></script>
+<!-- Add this in your layout -->
+<script src="{{ asset('livewire/livewire.js') }}"></script>
+<!-- Add this in your layout -->
+<script src="{{ asset('js/alpine.js') }}"></script>
+<script src="{{ asset('livewire/livewire.js') }}"></script>
+

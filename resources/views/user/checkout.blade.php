@@ -6,112 +6,93 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Checkout Page</title>
+    <link rel="stylesheet" href="path/to/your/styles.css">
     <script src="https://khalti.s3.ap-south-1.amazonaws.com/KPG/dist/2020.12.17.0.0.0/khalti-checkout.iffe.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <title>Document</title>
 </head>
 <body>
-  
 
-    <!-- component -->
-    <div class="grid grid-cols-2 gap-4">
-        <div class="leading-loose j">
-            {{-- <form   id="orderForm"  action="{{route('order.orderedproduct')}}" method="POST" class="max-w-xl m-4 p-10 bg-white rounded shadow-xl"> --}}
-                {{-- @csrf --}}
-                <p class="text-gray-800 font-medium">Customer information</p>
-                <div class="">
-                    <label class="block text-sm text-gray-00" for="cus_name">Name</label>
-                    <input class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="cus_name" name="person_name" type="text" required="" placeholder="Your Name" aria-label="Name" value="{{auth()->user()->name}}">
-                </div>
-                <div class="mt-2">
-                    <label class="block text-sm text-gray-600" for="cus_email">Email</label>
-                    <input class="w-full px-5  py-4 text-gray-700 bg-gray-200 rounded" id="cus_email" name="email" type="text" required="" placeholder="Your Email" aria-label="Email" value="{{auth()->user()->email}}">
-                </div>
-                <div class="mt-2">
-                    <label class="block text-sm text-gray-600" for="phone">Phone</label>
-                    <input class="w-full px-5  py-4 text-gray-700 bg-gray-200 rounded" id="phone" name="phone" type="text" required="" placeholder="Phone Number " aria-label="phone" value="{{auth()->user()->phone}}">
-                </div>
-                <div class="mt-2">
-                    <label class=" block text-sm text-gray-600" for="cus_email">Shipping Address</label>
-                    <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="street" name="street" type="text" required="" placeholder="Street" aria-label="Email" value="{{auth()->user()->street}}">
-                </div>
-                <div class="mt-2">
-                    <label class="hidden text-sm block text-gray-600" for="cus_email">City</label>
-                    <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="city" name="city" type="text" required="" placeholder="City" aria-label="Email"value="{{auth()->user()->city}}">
-                </div>
-                <div class="inline-block mt-2 w-1/2 pr-1">
-                    <label class="hidden block text-sm text-gray-600" for="cus_email">Country</label>
-                    <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="country" name="country" type="text" required="" placeholder="Country" aria-label="Email"value="{{auth()->user()->country}}">
-                </div>
-                <div class="inline-block mt-2 -mx-1 pl-1 w-1/2">
-                    <label class="hidden block text-sm text-gray-600" for="cus_email">Zip</label>
-                    <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="zip"  name="zipcode" type="text" required="" placeholder="Zip" aria-label="Email"value="{{auth()->user()->zip}}">
-                </div>
-                <p class="mt-4 text-gray-800 font-medium">Payment information</p>
-                <div class="">
-                    <label class="block text-sm text-gray-600" for="cus_name">Card</label>
-                    <select class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" onchange="paymentMethod(this.value)" id="paymentMethodSelect" name="payment_method" required="" aria-label="Name">
-                      <option   >Select Payment Method</option>
-                      <option  value="COD">Cash On Delivery</option>
-                      <option  value="KHALTI">Khalti</option>
-                    </select>
-                </div>
-                <div class="mt-4">
-                 
-                    <button onclick="submitdata()" class="px-4 py-1 text-white font-light tracking-wider bg-gray-900 rounded">GO</button>
-                    <a href="{{route('user.mycart')}}" class="px-4 ml-72 py-1 text-white font-light tracking-wider bg-red-500 rounded" type="submit">Cancel</a>
-                </div>
+<div class="grid grid-cols-2 gap-4">
+    <div class="leading-loose j">
+        <div class="max-w-xl m-4 p-10 bg-white rounded shadow-xl">
+            <h2 class="text-gray-800 font-medium mb-4">Customer Information</h2>
+            <div class="mb-2">
+                <label class="block text-sm text-gray-600" for="cus_name">Name</label>
+                <input class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="cus_name" name="person_name" type="text" required="" placeholder="Your Name" aria-label="Name" value="{{auth()->user()->name}}">
+            </div>
+            <div class="mb-2">
+                <label class="block text-sm text-gray-600" for="cus_email">Email</label>
+                <input class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="cus_email" name="email" type="text" required="" placeholder="Your Email" aria-label="Email" value="{{auth()->user()->email}}">
+            </div>
+            <div class="mb-2">
+                <label class="block text-sm text-gray-600" for="phone">Phone</label>
+                <input class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="phone" name="phone" type="text" required="" placeholder="Phone Number" aria-label="phone" value="{{auth()->user()->phone}}">
+            </div>
+            <div class="mb-2">
+                <label class="block text-sm text-gray-600" for="street">Shipping Address</label>
+                <input class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="street" name="street" type="text" required="" placeholder="Street" aria-label="Shipping Address" value="{{auth()->user()->street}}">
+            </div>
+            <div class="mb-2">
+                <label class="block text-sm text-gray-600" for="city">City</label>
+                <input class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="city" name="city" type="text" required="" placeholder="City" aria-label="City" value="{{auth()->user()->city}}">
+            </div>
+            <div class="inline-block w-1/2 pr-1">
+                <label class="block text-sm text-gray-600" for="country">Country</label>
+                <input class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="country" name="country" type="text" required="" placeholder="Country" aria-label="Country" value="{{auth()->user()->country}}">
+            </div>
+            <div class="inline-block -mx-1 pl-1 w-1/2">
+                <label class="block text-sm text-gray-600" for="zip">Zip</label>
+                <input class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="zip"  name="zipcode" type="text" required="" placeholder="Zip" aria-label="Zip" value="{{auth()->user()->zip}}">
+            </div>
+            <h2 class="mt-4 text-gray-800 font-medium">Payment Information</h2>
+            <div class="mb-2">
+                <label class="block text-sm text-gray-600" for="paymentMethodSelect">Card</label>
+                <select class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" onchange="paymentMethod(this.value)" id="paymentMethodSelect" name="payment_method" required="" aria-label="Payment Method">
+                    <option>Select Payment Method</option>
+                    <option value="COD">Cash On Delivery</option>
+                    <option value="KHALTI">Khalti</option>
+                </select>
+            </div>
+            <div class="mt-4">
+                <button onclick="submitdata()" class="px-4 py-1 text-white font-light tracking-wider bg-gray-900 rounded">GO</button>
+                <a href="{{route('user.mycart')}}" class="px-4 ml-6 py-1 text-white font-light tracking-wider bg-red-500 rounded" type="submit">Cancel</a>
+            </div>
         </div>
-        <div class="leading-loose j">
-            <div  class="max-w-xl m-4 p-10 bg-white rounded shadow-xl">
-              <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+    </div>
+    <div class="leading-loose j">
+        <div class="max-w-xl m-4 p-10 bg-white rounded shadow-xl">
+            <h2 class="text-gray-800 font-medium mb-4">Order Summary</h2>
+            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
-                        <th scope="col" class="px-2 py-3">
-                            S.N
-                        </th>
-                        <th scope="col" class="px-2 py-3">
-                            Product Image
-                         </th>
-                        <th scope="col" class="px-2 py-3">
-                             Name
-                        </th>
-                        <th scope="col" class="px-2 py-3">
-                          Quantity
-                      </th>
-                      <th scope="col" class="px-2 py-3">
-                        Amount
-                    </th>
+                        <th scope="col" class="px-2 py-3">S.N</th>
+                        <th scope="col" class="px-2 py-3">Product Image</th>
+                        <th scope="col" class="px-2 py-3">Name</th>
+                        <th scope="col" class="px-2 py-3">Quantity</th>
+                        <th scope="col" class="px-2 py-3">Amount</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @php
-                    $sn=1
-                @endphp
-                @foreach ($carts as $cart)
-                    <input type="hidden" name="cart_id" value="{{$cart->id}} " id="">
-                    <input type="hidden" name="user_id" value="{{$cart->user_id}} " id="">
-                    <input type="hidden" name="amount" value="{{$cart->amount}} " id="">
-                    <input type="hidden" name="status" value="{{$cart->status}} " id="">
-                    <input type="hidden" name="date" value="{{$cart->date}} " id="">
+                    @php $sn = 1 @endphp
+                    @foreach ($carts as $cart)
                     <tr>
-                        <td class="px-6 py-4">{{$sn++}}</td>
+                        <td class="px-6 py-4">{{ $sn++ }}</td>
                         <td class="px-6 py-4">
-                            <img src="{{ asset('images/product/' . $cart->image_url) }}"
-                                 alt="{{ asset('images/cart/' . $cart->image_url) }}" width="60" class="rounded-full">
+                            <img src="{{ asset('images/product/' . $cart->image_url) }}" alt="{{ asset('images/cart/' . $cart->image_url) }}" width="60" class="rounded-full">
                         </td>
-                        <td class="px-6 py-4">{{$cart->product->product_name}}</td>
-                        <td class="px-6 py-4">{{$cart->qty}}</td>
-                        <td class="px-6 py-4">{{$cart->product->price * $cart->qty}}</td>
+                        <td class="px-6 py-4">{{ $cart->product->product_name }}</td>
+                        <td class="px-6 py-4">{{ $cart->qty }}</td>
+                        <td class="px-6 py-4">{{ $cart->product->price * $cart->qty }}</td>
                     </tr>
-                @endforeach
+                    @endforeach
                 </tbody>
             </table>
         </div>
     </div>
 </div>
-{{-- </form> --}}
+
+
 
 <script>
 
