@@ -39,7 +39,7 @@
       <td>{{$order->phone}}</td>
       <td>{{$order->street}}</td>
       <td>{{$order->amount}}</td>
-      <td>{{$order->payment_method}}</td>
+      <td>{{$order->payement_method}}</td>
       <td>{{$order->status}}</td>
       <td>
         <a href="{{route('admin.order.details',$order->id)}}" class="bg-blue-600 px-2 py-1 rounded text-white hover:shadow-blue-600">View Details</a>

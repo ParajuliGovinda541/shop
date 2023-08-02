@@ -69,12 +69,7 @@
                             $totalprice += $cart->product->price * $cart->qty;
                         @endphp
                     </div>
-                    {{-- <div class="pr-2">
-                    <a class="bg-yellow-500 hover:bg-red-700 text-white  py-0 px-1 border border-blue-700 rounded">
-                        Update
-                      </a>
-                    
-                </div> --}}
+                
                     <div class="pr-2">
                         <a onclick="return confirm('Are you sure want to delete ?')"
                             href="{{ route('user.mycart.destroy', $cart->id) }}"
@@ -83,13 +78,7 @@
                         </a>
 
                     </div>
-                    {{-- <div class="pr-2">
-                            <button type="submit"
-                                class="bg-green-500 hover:bg-blue-700 text-white font-bold py-0 px-1 border border-blue-700 rounded">
-                                Order
-                            </button>
-
-    </div> --}}
+              
     </form>
 
     <div>

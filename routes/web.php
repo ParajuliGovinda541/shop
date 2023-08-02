@@ -51,7 +51,7 @@ Route::get('/', [FrontuserController::class, 'home'])->name('home');
 // route for userregister and login
 Route::get('/userlogin', [FrontuserController::class, 'userlogin'])->name('userlogin');
 Route::get('/user/userregister', [FrontuserController::class, 'userregister'])->name('user.userregister');
-Route::post('/userregister', [FrontuserController::class, 'userstore'])->name('user.store');
+Route::post('user/userregister', [FrontuserController::class, 'userstore'])->name('user.store');
 
 
 // route for product store page
@@ -85,13 +85,7 @@ Route::get('/user/search', [FrontuserController::class, 'search'])->name('user.s
 
 Route::get('/user/khalti', [FrontuserController::class, 'khalti'])->name('user.khalti');
 
-// Route::post('/user/khalti',function (Request $request){
 
-
-// return response()->json($request);
-
-
-// })->name('user.khalti.verify');
 
 Route::post('/khalti', function (Request $request) {
     // Process the request
@@ -121,6 +115,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/user/wishlist', [WishlistController::class, 'index'])->name('user.wishlist');
     Route::POST('/user/wishlist/{id}', [WishlistController::class, 'store'])->name('wishlist.store');
     Route::get('/user/wishlist', [WishlistController::class, 'show'])->name('user.wishlist');
+    Route::get('/user/{id}/destroy', [WishlistController::class, 'destroy'])->name('user.wishlist.destroy');
+
+    
+
+
 });
 
 
@@ -180,6 +179,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
     Route::get('/contact/create', [ContactController::class, 'create'])->name('contact.create');
     Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+    Route::get('/contact/{id}/details', [ContactController::class, 'details'])->name('admin.contact.details');
+
+
+
+
+
 
     Route::get('/registeruser', [RegisterUserController::class, 'index'])->name('registeruser.index');
     Route::get('/registeruser/{id}/details', [RegisterUserController::class, 'details'])->name('admin.registeruser.details');

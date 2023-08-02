@@ -25,7 +25,7 @@
             <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div class="flex flex-shrink-0 items-center">
                     <a href="{{ '/' }}">
-                        <img src="{{ asset('images/logo.jpg') }}" alt="logo"
+                        <img src="{{ asset('images/logo.png') }}" alt="logo"
                             class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200">
 
                     </a>

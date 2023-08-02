@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Contact;
 use App\Models\cart;
-
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
@@ -29,7 +29,17 @@ class ContactController extends Controller
 
         return view('user.contact',compact('itemsincart'));
     }
-
+    
+    public function details($contactid)
+    {
+        $contact = Contact::find($contactid);
+        // Make sure $contact is not null and contains valid data.
+        
+        $users = User::whereIn('id', explode(',', $contact->user_id))->get();
+        
+        return view('contact.details', compact('users','contact'));
+    }
+    
 
     public function index()
     {

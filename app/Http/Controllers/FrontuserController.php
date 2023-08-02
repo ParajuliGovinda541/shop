@@ -145,8 +145,10 @@ class FrontuserController extends Controller
     {
         $cart = Cart::find($id);
         $cart->delete();
-        return redirect(route('user.mycart'))->with('success', 'cart deleted sucessfully!');
+        return redirect(route('user.mycart'))->with('success', 'Cart deleted sucessfully!');
     }
+
+  
 
     public function orderedproduct(Request $request)
     {

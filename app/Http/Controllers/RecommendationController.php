@@ -8,8 +8,8 @@ class RecommendationController extends Controller
 {
     public function recentlyAdded()
     {
-        $recentlyAddedProducts = Product::orderBy('created_at', 'desc')->take(5)->get();
+        $recentlyAddedProducts = Product::take(5)('id', 'desc')->orderBy->get();
 
-        return view('user.recommendation', compact('recentlyAddedProducts'));
+        return view('/', compact('recentlyAddedProducts'));
     }
 }

@@ -150,7 +150,7 @@ function paymentMethod(method)
     {
 
         khalti(data);
-        checkout.show({amount: 1000});
+        checkout.show({amount: {{$cart->product->price * $cart->qty}}});
       
         // console.log(paymentMethodSelect);
     } 

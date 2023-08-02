@@ -85,10 +85,20 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);       
+        // dd($request);  
+        
+        
+
+
+        $product=Product::find($request->product_id);
+
+        $productQty=$product->quantity;
+
+        // dd($productQty);
+
         $data = $request->validate([ 
 
-            'qty' => 'required',
+            'qty' => 'required|numeric|max:'.$productQty,
             'image_url' => 'required',
 
             'product_id' => 'required',
@@ -97,6 +107,7 @@ class CartController extends Controller
 
 
         ]);
+        // dd($data);
         if($request->hasFile('image_url'))
         {
             $image=$request->file('image_url');
@@ -117,6 +128,15 @@ class CartController extends Controller
         }
 // dd($check);
         Cart::create($data);
+        $product->quantity=$product->quantity-$request->qty;
+
+
+        $product->save();
+
+
+
+
+
         return back()->with('success','Item added to Cart');
     }
 

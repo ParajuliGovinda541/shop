@@ -27,8 +27,7 @@
         <h1 class="text-center text-4xl">About Us</h1>
     </div>
     <div class="flex flex-wrap items-center justify-center mb-8">
-        <img class="w-48 h-48 mx-4 my-2" src="{{ asset('images\logo.jpg') }}" alt="Store Logo">
-        <img class="w-48 h-48 mx-4 my-2" src="{{ asset('images\product\6472d8c164172.jpg') }}" alt="Product Photos">
+        <img class="w-48 h-48 mx-4 my-2" src="{{ asset('images\logo.png') }}" alt="Store Logo">
     </div>
     <div class="mt-5 ml-10 max-w-sm grid grid-cols-1">
         <p class="text-lg text-gray-700 mb-8">We are a leading ecommerce store dedicated to providing high-quality
@@ -48,7 +47,7 @@
                 you're looking for, whether it's the latest fashion trends, home decor items, or unique gifts.</p>
         </div>
         <div>
-            <img class="w-48 h-48 mx-4 my-2 " src="{{ asset('images\logo.jpg') }}" alt="">
+            <img class="w-48 h-48 mx-4 my-2 " src="{{ asset('images\logo.png') }}" alt="">
 
         </div>
 
@@ -56,7 +55,7 @@
 
     <div class="mt-5 ml-10 justify-items-center grid grid-cols-2">
         <div>
-            <img class="w-48 h-48 mx-4 my-2" src="{{ asset('images\logo.jpg') }}" alt="Team Photo 1">
+            <img class="w-48 h-48 mx-4 my-2" src="{{ asset('images\logo.png') }}" alt="Team Photo 1">
 
         </div>
         <div>
@@ -77,9 +76,9 @@
 
 
     <div class="flex flex-wrap items-center justify-center mb-8">
-        <img class="w-48 h-48 mx-4 my-2" src="{{ asset('images\logo.jpg') }}" alt="Team Photo 1">
-        <img class="w-48 h-48 mx-4 my-2" src="{{ asset('images\logo.jpg') }}" alt="Team Photo 2">
-        <img class="w-48 h-48 mx-4 my-2" src="{{ asset('images\logo.jpg') }}" alt="Team Photo 3">
+        <img class="w-48 h-48 mx-4 my-2" src="{{ asset('images\product\1690962612.jpg') }}" alt="Team Photo 1">
+        <img class="w-48 h-48 mx-4 my-2" src="{{ asset('images\product\1690966242.png') }}" alt="Team Photo 2">
+        <img class="w-48 h-48 mx-4 my-2" src="{{ asset('images\product/1689655214.jpg') }}" alt="Team Photo 3">
     </div>
 
     <p class="text-lg text-gray-700">Thank you for choosing our store. We look forward to serving you!</p>

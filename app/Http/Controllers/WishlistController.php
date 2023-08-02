@@ -64,11 +64,11 @@ class WishlistController extends Controller
 
     public function show()
     {
-        $wishlistproducts= Wishlist::where('user_id',auth()->user()->id)->pluck('product_id');
-         $products = Product::whereIn('id',$wishlistproducts->toArray())->get();
+        $wishlistproducts= Wishlist::where('user_id',auth()->user()->id)->get();
+        //  $products = Product::whereIn('id',$wishlistproducts->toArray())->get();
 
         // dd($products);
-        return view('user.wishlist', compact('products'))    ;
+        return view('user.wishlist', compact('wishlistproducts'))    ;
     }
 
     public function wishlistcount($id)
@@ -80,5 +80,12 @@ class WishlistController extends Controller
         // dd($wishcount);
 
         return redirect(route('user.index', compact('itemsincart', 'categories', 'wishcounts')));
+    }
+
+    public function destroy($id)
+    {
+        $wishlist = wishlist::find($id);
+        $wishlist->delete();
+        return redirect(route('user.wishlist'))->with('success', 'Product deleted sucessfully!');
     }
 }

@@ -15,19 +15,22 @@
         <thead>
             <th>S.N</th>
             <th>Name</th>
+            <th>Message</th>
             <th>Action</th>
 
 
         </thead>
         <tbody>
-            @foreach($contacts as $contact)
+            @foreach($users as $user)
             <tr>
-                <td>{{$contact->id}}</td>
+                <td>{{$user->id}}</td>
 
-                <td>{{$contact->name}}</td>
+                <td>{{$user->name}}</td>
+                <td>{{$user->message}}</td>
 
                 <td>
-                    <a href="{{ route('admin.contact.details', $contact->id) }}" class="bg-blue-600 px-2 py-1 rounded text-white hover:shadow-blue-600">View Details</a>
+                    <a href=""class="bg-blue-600 px-2 py-1 rounded text-white hover:shadow-blue-600">Response</a>
+                    <a onclick="return confirm('Are you sure want to delete ?')" href=""class="bg-red-600 px-2 py-1 rounded text-white hover:shadow-blue-400">Delete</a>
                 </td>
             </tr>
             @endforeach
