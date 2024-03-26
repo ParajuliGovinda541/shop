@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\Interaction;
 use Illuminate\Support\Facades\File;
+
 
 class ProductController extends Controller
 {
@@ -15,6 +17,7 @@ class ProductController extends Controller
     public function index()
     {
         $products=Category::join('products','categories.id','=','products.categories_id')->get();
+        
         //  dd($products);
 
         return view('admin.product.index',compact('products'));
@@ -90,6 +93,14 @@ class ProductController extends Controller
         
     }
 
+
+
+    
+
+
+
+
+
     /**
      * Display the specified resource.
      */
@@ -154,5 +165,24 @@ class ProductController extends Controller
         // dd($products);
         $products->delete();
         return redirect(route('admin.product.index'))->with('success','Product deleted sucessfully!');
+    }
+
+
+    public function showRecommendations()
+    {
+        $userId = auth()->id();
+
+        // Get a list of product IDs that the user has interacted with
+        $userInteractedProducts = Interaction::where('user_id', $userId)
+            ->pluck('product_id')
+            ->toArray();
+
+        // Get recommended products based on user interactions
+        $recommendedProducts = Product::whereNotIn('id', $userInteractedProducts)
+            ->inRandomOrder()
+            ->limit(5)
+            ->get();
+
+        return view('recommendations', ['products' => $recommendedProducts]);
     }
 }

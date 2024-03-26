@@ -2,6 +2,42 @@
 <html>
 <head>
     <!-- Your head content goes here -->
+    <style>
+        .sorting-dropdown {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.sorting-dropdown select {
+    width: 100%;
+    border: none;
+    border-radius: 0.25rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    color: #333;
+    background-color: #fff;
+}
+
+.sorting-dropdown .dropdown-toggle::after {
+    content: '';
+    display: none;
+}
+
+.sorting-dropdown .dropdown-toggle:hover::after {
+    display: block;
+    width: 0;
+    height: 0;
+    border-top: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+    border-left: 7px solid #000;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+    </style>
 </head>
 <body>
     @extends('links.links')
@@ -14,8 +50,25 @@
     <div>
         <h1 class="text-center text-4xl">Featured Products</h1>
     </div>
-    <div class="grid grid-cols-4 gap-4">
+   <!-- Add this code where you want the dropdown menu to appear -->
+   <div class="sorting-dropdown">
+    <form id="sort-form" action="{{ route('user.product') }}" method="GET">
+        <label for="sort-dropdown">Sort by:</label>
+        <select id="sort-dropdown" name="sort[]" multiple onchange="document.getElementById('sort-form').submit()">
+            <option value="price_high_to_low" {{ in_array('price_high_to_low', request('sort', [])) ? 'selected' : '' }}>Price (High to Low)</option>
+            <option value="price_low_to_high" {{ in_array('price_low_to_high', request('sort', [])) ? 'selected' : '' }}>Price (Low to High)</option>
+            <option value="name_a_to_z" {{ in_array('name_a_to_z', request('sort', [])) ? 'selected' : '' }}>Name (A to Z)</option>
+            <option value="name_z_to_a" {{ in_array('name_z_to_a', request('sort', [])) ? 'selected' : '' }}>Name (Z to A)</option>
+        </select>
 
+        
+    </form>
+</div>
+    
+    
+    <div class="grid grid-cols-4 gap-4">
+     
+        
         {{-- Cards start here --}}
         @foreach ($products as $product)
         <form action="{{route('wishlist.store',$product->id)}}" method="POST">
@@ -49,9 +102,27 @@
     </div>
     <div class="flex items-center justify-between p-4">
         <div class="mx-24 my-10 ">
-            {{ $products->links() }}
+            {{-- {{ $products->links() }} --}}
+            <!-- Display pagination links -->
+{{ $products->appends(['sort' => request('sort')])->links() }}
+
         </div>
     </div>
     @include('user.footer')
 </body>
+<script>
+    function handleSortChange(select) {
+        var selectedValue = select.value;
+        var url = "{{ route('user.product') }}" + "?sort=" + selectedValue;
+        window.location.href = url;
+    }
+
+    
+    document.getElementById('sort-dropdown').addEventListener('change', function () {
+        document.getElementById('sort-form').submit();
+    });
+
+
+</script>
+
 </html>

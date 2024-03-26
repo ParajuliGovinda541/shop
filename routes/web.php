@@ -70,6 +70,8 @@ Route::get('/user/recommendation', [FrontuserController::class, 'recentlyAdded']
 
 
 
+
+
 //Route for userside
 
 
@@ -101,6 +103,7 @@ Route::post('/khalti', function (Request $request) {
 })->name('user.khalti.verify');
 
 
+Route::get('/user/sort-related-products', [UserController::class, 'sortRelatedProducts'])->name('user.sort_related_products');
 
 
 
@@ -116,6 +119,7 @@ Route::middleware(['auth'])->group(function () {
     Route::POST('/user/wishlist/{id}', [WishlistController::class, 'store'])->name('wishlist.store');
     Route::get('/user/wishlist', [WishlistController::class, 'show'])->name('user.wishlist');
     Route::get('/user/{id}/destroy', [WishlistController::class, 'destroy'])->name('user.wishlist.destroy');
+    Route::get('/user/recommendations', [ProductController::class, 'showRecommendations'])->middleware('auth');
 
     
 

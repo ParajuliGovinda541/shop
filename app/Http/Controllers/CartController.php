@@ -86,10 +86,6 @@ class CartController extends Controller
     public function store(Request $request)
     {
         // dd($request);  
-        
-        
-
-
         $product=Product::find($request->product_id);
 
         $productQty=$product->quantity;

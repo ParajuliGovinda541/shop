@@ -22,3 +22,6 @@
 <script src="{{ asset('js/alpine.js') }}"></script>
 <script src="{{ asset('livewire/livewire.js') }}"></script>
 
+
+
+

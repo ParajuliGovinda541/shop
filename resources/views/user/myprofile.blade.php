@@ -44,10 +44,11 @@
                                     Image
                                 </label>
                                 <img class="w-20" src="{{ asset('images/user/' . auth()->user()->image_url) }}" alt="">
-                                <input
-                                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                
+                                
+                                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                     name="image_url" value="{{ auth()->user()->image_url }}" id="grid-last-name"
-                                    type="file" placeholder="">
+                                     placeholder="No Image Selected">
                                 @error('image_url')
                                     <p class="text-red-600 text-xs -mt-2">{{ $message }}</p>
                                 @enderror

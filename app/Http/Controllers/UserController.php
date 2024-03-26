@@ -21,6 +21,18 @@ class UserController extends Controller
         }
     }
 
+    public function sortRelatedProducts(Request $request)
+{
+    $sortOption = $request->input('sort');
+
+    // Implement your sorting logic here based on the $sortOption
+    // Retrieve and sort related products accordingly
+
+    // Render the sorted products and return as HTML response
+    $sortedProducts = view('user.related_products', ['relatedproducts' => $sortedProducts])->render();
+    return response()->json(['html' => $sortedProducts]);
+}
+
     public function include()
     {
         if(!auth()->user())

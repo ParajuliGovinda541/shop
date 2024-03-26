@@ -48,22 +48,25 @@ class FrontuserController extends Controller
         $wishcounts=$this->wishcount();
         $itemsincart = $this->include();
         $products = Product::paginate(8);
+        
         $categories = Category::all();
+
         return view('user.index', compact('products', 'categories', 'itemsincart','wishcounts'));
+
+
     }
 
     public function recommendation()
     {
         return view('user.recommendation');
     }
-
     public function recentlyAdded()
     {
-        $products = Product::orderBy('created_at', 'desc')->take(5)->get();
-
-        
-        return view('user.recommendation', compact('products'));
+        $latestProduct = Product::latest()->first()->paginate(4);
+    
+        return view('user.recommendation', ['latestProduct' => $latestProduct]);
     }
+    
     public function about()
     {
         return view('user.about');
@@ -113,15 +116,34 @@ class FrontuserController extends Controller
         return redirect(route('user.index'));
     }
 
-    public function product()
-    {
-        $itemsincart = $this->include();
+    public function product(Request $request)
+{
+    $itemsincart = $this->include();
+    $wishcounts = $this->wishcount();
 
-        $products = Product::paginate(8);
-        $wishcounts=$this->wishcount();
+    $sortOptions = $request->input('sort', []);
 
-        return view('user.product', compact('products', 'itemsincart','wishcounts'));
+    $products = Product::query();
+
+    if (in_array('price_high_to_low', $sortOptions)) {
+        $products->orderBy('price', 'desc');
     }
+    if (in_array('price_low_to_high', $sortOptions)) {
+        $products->orderBy('price', 'asc');
+    }
+    if (in_array('name_a_to_z', $sortOptions)) {
+        $products->orderBy('product_name', 'asc');
+    }
+    if (in_array('name_z_to_a', $sortOptions)) {
+        $products->orderBy('product_name', 'desc');
+    }
+
+    $products = $products->paginate(8);
+
+    return view('user.product', compact('products', 'itemsincart', 'wishcounts'));
+}
+
+    
 
     // route for viewing category
 

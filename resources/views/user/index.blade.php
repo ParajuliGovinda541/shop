@@ -21,6 +21,30 @@
 
 <body>
     @include('user.navbar')
+
+
+
+    <!-- resources/views/recommendations.blade.php -->
+
+@section('content')
+    <div class="container mx-auto">
+        <h1 class="text-3xl font-semibold mb-4">Recommended Products</h1>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            @foreach ($products as $product)
+                <div class="border p-4">
+                    <a href="{{ route('user.viewproduct', $product->id) }}">
+                    <img class="w-full h-56 object-cover" src="{{ asset('images/product/' . $product->image_url) }}"
+                    alt="Product Image">
+                    </a>
+                    <h2 class="text-lg font-semibold">{{ $product->product_name }}</h2>
+                </div>
+            @endforeach
+        </div>
+    </div>
+@endsection
+
+
+
     @include('user.recommendation')
 
     {{-- @include('user.slider') --}}

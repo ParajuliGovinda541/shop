@@ -2,18 +2,22 @@
 
 namespace App\Http\Controllers;
 
+
+
 use App\Models\cart;
 use App\Models\order;
+use App\Notifications\NewOrderNotification;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 
 
+
 class OrderController extends Controller
 {
 
-  
+   
 
   public $status ,$email;
     public function index()

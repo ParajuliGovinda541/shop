@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RecommendationController extends Controller
 {
@@ -12,4 +13,6 @@ class RecommendationController extends Controller
 
         return view('/', compact('recentlyAddedProducts'));
     }
-}
+
+
+   }
